@@ -1,8 +1,9 @@
 package edu.gatech.oad.antlab.person;
+import java.util.Random;
 /**
  *  A simple class for person 2
  *  returns their name and a
- *  modified string 
+ *  modified string
  *
  * @author Bob
  * @version 1.1
@@ -30,10 +31,10 @@ public class Person2 {
 	 */
 	private String calc(String input) {
 		//Person 2 put your implementation here
-		Math.random rand = new Math.random();
-		String myArray[] = input.toCharArray();
+		Random rand = new Random();
+		char myArray[] = input.toCharArray();
 
-		for (int i = 0; i < input.length; i++) {
+		for (int i = 0; i < myArray.length; i++) {
 			myArray[i] = myArray[rand.nextInt(input.length())];
 		}
 		return myArray.toString();
@@ -43,7 +44,7 @@ public class Person2 {
 	 * that varies with an input string
 	 *
 	 * @param input the varying string
-	 * @return the string representing the 
+	 * @return the string representing the
 	 *         object
 	 */
 	public String toString(String input) {
