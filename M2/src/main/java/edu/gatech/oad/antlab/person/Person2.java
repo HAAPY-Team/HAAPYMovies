@@ -35,9 +35,12 @@ public class Person2 {
 		char myArray[] = input.toCharArray();
 
 		for (int i = 0; i < myArray.length; i++) {
-			myArray[i] = myArray[rand.nextInt(input.length())];
+            int randIndex = rand.nextInt(input.length());
+            char temp = myArray[i];
+			myArray[i] = myArray[randIndex];
+            myArray[randIndex] = temp;
 		}
-		return myArray.toString();
+		return new String(myArray);
 	}
 	/**
 	 * Return a string rep of this object
