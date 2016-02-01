@@ -1,0 +1,17 @@
+apply plugin: 'java'
+
+defaultTasks 'jar'
+
+dependencies {
+    compile files('./lib/resources.jar')
+}
+
+version = '1.0'
+jar {
+    manifest {
+        attributes 'Implementation-Title' : 'M2 HAAPY Movies',
+		   'Implementation-Version' : version,
+		   'Main-Class' : 'edu.gatech.oad.antlab.pkg1.AntLabMain',
+		   'Class-Path' : '../../lib/resources.jar' 
+    }
+}
