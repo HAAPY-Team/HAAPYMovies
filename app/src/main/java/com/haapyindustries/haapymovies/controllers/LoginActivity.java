@@ -3,7 +3,6 @@ package com.haapyindustries.haapymovies.controllers;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.provider.ContactsContract;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
@@ -45,7 +44,7 @@ public class LoginActivity extends AppCompatActivity {
         String password = passBox.getText().toString();
         UserManager um = new UserManager();
         if (um.handleLoginRequest(username, password)) {
-            Intent intent = new Intent(this, ProfilePageActitivty.class);
+            Intent intent = new Intent(this, ProfilePageActivity.class);
             finish();
             startActivity(intent);
         } else {

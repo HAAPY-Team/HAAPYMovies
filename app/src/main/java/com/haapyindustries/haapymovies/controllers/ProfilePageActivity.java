@@ -11,12 +11,12 @@ import android.view.View;
 import com.haapyindustries.haapymovies.R;
 import com.haapyindustries.haapymovies.Welcome;
 
-public class ProfilePageActitivty extends AppCompatActivity {
+public class ProfilePageActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_profile_page_actitivty);
+        setContentView(R.layout.activity_profile_page_activity);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
