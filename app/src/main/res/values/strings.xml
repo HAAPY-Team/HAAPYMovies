@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">HAAPYMovies</string>
+    <string name="login_button">Login</string>
+    <string name="register_button">Register</string>
+    <string name="title_activity_login">LoginActivity</string>
+    <string name="title_activity_profile_page_actitivty">ProfilePageActitivty</string>
+    <!--<string name="register_button">Register</string>-->
+    <!--<string name="login_button">Login</string>-->
 </resources>
