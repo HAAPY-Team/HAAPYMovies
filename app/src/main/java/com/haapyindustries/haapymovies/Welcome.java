@@ -7,6 +7,7 @@ import android.util.Log;
 import android.view.View;
 
 import com.haapyindustries.haapymovies.controllers.LoginActivity;
+import com.haapyindustries.haapymovies.controllers.RegistrationPageActivity;
 import com.haapyindustries.haapymovies.models.UserManager;
 
 public class Welcome extends AppCompatActivity {
@@ -21,6 +22,11 @@ public class Welcome extends AppCompatActivity {
 
     public void onLoginButtonClick(View w) {
         Intent intent = new Intent(this, LoginActivity.class);
+        startActivity(intent);
+    }
+
+    public void onRegistrationnButtonClick(View w) {
+        Intent intent = new Intent(this, RegistrationPageActivity.class);
         startActivity(intent);
     }
 

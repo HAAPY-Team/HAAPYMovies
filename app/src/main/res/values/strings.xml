@@ -4,6 +4,13 @@
     <string name="register_button">Register</string>
     <string name="title_activity_login">Login</string>
     <string name="title_activity_profile_page_activity">Profile Page</string>
+    <string name="title_activity_registration_page">Registration Page</string>
+    <string name="register_page_username">Username</string>
+    <string name="register_page_password">Password</string>
+    <string name="register_page_register_button">Register</string>
+    <string name="register_page_cancel_button">Cancel</string>
+    <string name="register_page_major">Major</string>
+    <string name="profile_page_edit_button">Edit</string>
     <!--<string name="register_button">Register</string>-->
     <!--<string name="login_button">Login</string>-->
 </resources>

@@ -13,8 +13,8 @@ public class UserManager {
 
     }
 
-    public void addUser(String username, String password) {
-        User user = new User(username, password);
+    public void addUser(String username, String password, String major) {
+        User user = new User(username, password, major);
         users.put(username, user);
     }
 
@@ -24,6 +24,10 @@ public class UserManager {
             return false;
         }
         return currUser.checkPass(password);
+    }
+
+    public boolean doesUserExist(String username) {
+        return !(users.get(username) == null);
     }
 
 
