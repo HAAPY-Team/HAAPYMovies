@@ -14,8 +14,20 @@ import android.widget.Toast;
 import com.haapyindustries.haapymovies.R;
 import com.haapyindustries.haapymovies.models.UserManager;
 
+/**
+ * Login Page Activity
+ * Shows Login Page and handles button clicks on it
+ *
+ * @author Yuanhan Pan
+ * @version M4
+ */
 public class LoginActivity extends AppCompatActivity {
 
+    /**
+     * Sets up Login page
+     *
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,17 +45,27 @@ public class LoginActivity extends AppCompatActivity {
         });
     }
 
+    /**
+     * Cancels login, ends activity
+     *
+     * @param w
+     */
     public void onCancelButtonClick(View w) {
         finish();
     }
 
+    /**
+     * Logs in User and goes to profile page on success
+     * Displays "Login Failed" Toast on failure
+     *
+     * @param w
+     */
     public void onLoginButtonClick(View w) {
         EditText userBox = (EditText) findViewById(R.id.user_box);
         EditText passBox = (EditText) findViewById(R.id.pass_box);
         String username = userBox.getText().toString();
         String password = passBox.getText().toString();
-        UserManager um = new UserManager();
-        if (um.handleLoginRequest(username, password)) {
+        if (UserManager.handleLoginRequest(username, password)) {
             Intent intent = new Intent(this, ProfilePageActivity.class);
             finish();
             startActivity(intent);

@@ -10,22 +10,43 @@ import com.haapyindustries.haapymovies.controllers.LoginActivity;
 import com.haapyindustries.haapymovies.controllers.RegistrationPageActivity;
 import com.haapyindustries.haapymovies.models.UserManager;
 
+/**
+ * Welcome Page Activity
+ * displays welcome page and handles associated button clicks
+ *
+ * @version M4
+ * @author Yuanhan Pan, pjztam
+ */
 public class Welcome extends AppCompatActivity {
 
+    /**
+     * Sets up Welcome Page
+     *
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_welcome);
-        UserManager um = new UserManager();
-        um.addUser("Patrick", "password");
     }
 
+    /**
+     * Handles Login Button clicks
+     * goes to Login page
+     *
+     * @param w
+     */
     public void onLoginButtonClick(View w) {
         Intent intent = new Intent(this, LoginActivity.class);
         startActivity(intent);
     }
 
-    public void onRegistrationnButtonClick(View w) {
+    /**
+     * Handles Registration Button clicks
+     * goes to Registration page
+     * @param w
+     */
+    public void onRegistrationButtonClick(View w) {
         Intent intent = new Intent(this, RegistrationPageActivity.class);
         startActivity(intent);
     }

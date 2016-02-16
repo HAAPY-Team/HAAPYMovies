@@ -17,28 +17,62 @@
         android:layout_height="wrap_content"
         android:text="Logout"
         android:id="@+id/logout_button"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="85dp"
-        android:layout_below="@+id/textView2"
-        android:layout_alignParentStart="true"
-        android:onClick="onLogoutButtonClick" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceSmall"
-        android:text="You are logged in!"
-        android:id="@+id/textView2"
+        android:onClick="onLogoutButtonClick"
         android:layout_alignParentTop="true"
-        android:layout_alignStart="@+id/logout_button"
-        android:layout_marginTop="52dp" />
+        android:layout_alignParentEnd="true" />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/profile_page_edit_button"
-        android:id="@+id/button3"
+        android:id="@+id/edit_button"
         android:layout_centerVertical="true"
-        android:layout_alignStart="@+id/logout_button" />
+        android:layout_centerHorizontal="true"
+        android:onClick="onEditButtonClick" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Large Text"
+        android:id="@+id/profilePageBanner"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/profilePageMajor"
+        android:layout_below="@+id/textView5"
+        android:layout_alignParentStart="true"
+        android:layout_alignEnd="@+id/profilePagePassword" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textPassword"
+        android:ems="10"
+        android:id="@+id/profilePagePassword"
+        android:layout_below="@+id/textView6"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="@string/register_page_major"
+        android:id="@+id/textView5"
+        android:layout_marginTop="15dp"
+        android:layout_below="@+id/logout_button"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="@string/register_page_password"
+        android:id="@+id/textView6"
+        android:layout_below="@+id/profilePageMajor"
+        android:layout_alignParentStart="true" />
 
 </RelativeLayout>
