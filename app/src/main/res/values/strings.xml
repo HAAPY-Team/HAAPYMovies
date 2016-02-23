@@ -11,6 +11,7 @@
     <string name="register_page_cancel_button">Cancel</string>
     <string name="register_page_major">Major</string>
     <string name="profile_page_edit_button">Edit</string>
+    <string name="title_activity_movie_list">MovieListActivity</string>
     <!--<string name="register_button">Register</string>-->
     <!--<string name="login_button">Login</string>-->
 </resources>
