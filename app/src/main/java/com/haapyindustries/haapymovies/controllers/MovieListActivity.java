@@ -67,6 +67,7 @@ public class MovieListActivity extends AppCompatActivity {
         });
 
         Button newRelease = (Button) findViewById(R.id.button3);
+        Button newDVD = (Button) findViewById(R.id.button4);
         Log.d("created", "created");
 //        newRelease.setOnClickListener(new View.OnClickListener() {
 //            @Override
@@ -82,9 +83,25 @@ public class MovieListActivity extends AppCompatActivity {
 
 
     }
-
-    public void getReleasesTheater(View view, String type) {
+    public void getReleasesTheater(View view) {
+        getReleases("theaterREQ");
+    }
+    public void getReleasesDVD(View view) {
+        getReleases("dvdREQ");
+    }
+    public void movieSearch(View view) {
+        EditText searchbox = (EditText) findViewById(R.id.editText);
+        getReleases(searchbox.getText().toString());
+    }
+    public void getReleases(String type) {
         String url = "http://api.rottentomatoes.com/api/public/v1.0/lists/movies/in_theaters.json?apikey=yedukp76ffytfuy24zsqk7f5";
+        if(type == "theaterREQ") {
+            url = "http://api.rottentomatoes.com/api/public/v1.0/lists/movies/in_theaters.json?apikey=" + apiKey;
+        } else if(type == "dvdREQ") {
+            url = "http://api.rottentomatoes.com/api/public/v1.0/lists/dvds/new_releases.json?apikey=" + apiKey;
+        } else {
+            url = "http://api.rottentomatoes.com/api/public/v1.0/movies.json?apikey="+apiKey+"&q=" + type;
+        }
         Log.d("shit", "shit is happening");
 
         JsonObjectRequest joR = new JsonObjectRequest(Request.Method.GET, url, (String) null, new Response.Listener<JSONObject>() {

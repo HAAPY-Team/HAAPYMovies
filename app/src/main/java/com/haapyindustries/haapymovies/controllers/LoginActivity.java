@@ -66,7 +66,7 @@ public class LoginActivity extends AppCompatActivity {
         String username = userBox.getText().toString();
         String password = passBox.getText().toString();
         if (UserManager.handleLoginRequest(username, password)) {
-            Intent intent = new Intent(this, ProfilePageActivity.class);
+            Intent intent = new Intent(this, MovieListActivity.class);
             finish();
             startActivity(intent);
         } else {

@@ -12,33 +12,59 @@
     tools:context="com.haapyindustries.haapymovies.controllers.MovieListActivity"
     tools:showIn="@layout/activity_movie_list">
 
-    <ListView
-        android:id="@+id/mobile_list"
+    <LinearLayout
+        android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" >
-    </ListView>
+        android:layout_height="match_parent"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
+        android:id="@+id/linearLayout">
 
-    <SearchView
+        <EditText
+            android:layout_width="255dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/editText"
+            android:layout_alignParentTop="true"
+            android:layout_toStartOf="@+id/button4"
+            android:layout_alignParentEnd="true" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="New in Theater"
+            android:id="@+id/button3"
+            android:onClick="getReleasesTheater"
+            android:layout_alignBottom="@+id/editText"
+            android:layout_alignParentStart="true"
+            android:layout_gravity="center_horizontal" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="New on DVD"
+            android:id="@+id/button4"
+            android:onClick="getReleasesDVD"
+            android:layout_alignBottom="@+id/editText"
+            android:layout_alignEnd="@+id/mobile_list"
+            android:layout_gravity="center_horizontal" />
+
+        <ListView
+            android:id="@+id/mobile_list"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/editText">
+        </ListView>
+    </LinearLayout>
+
+    <Button
+        style="?android:attr/buttonStyleSmall"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/searchView"
+        android:text="Search!"
+        android:id="@+id/button5"
         android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="258dp"
+        android:onClick="movieSearch" />
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="New in Theater"
-        android:id="@+id/button3"
-        android:layout_below="@+id/searchView"
-        android:layout_toStartOf="@+id/searchView"
-        android:onClick="getReleasesTheater" />
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="New on DVD"
-        android:id="@+id/button4"
-        android:layout_below="@+id/searchView"
-        android:layout_toEndOf="@+id/searchView" />
 </RelativeLayout>
