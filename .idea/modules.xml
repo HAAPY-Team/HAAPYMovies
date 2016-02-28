@@ -2,7 +2,11 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+<<<<<<< HEAD
       <module fileurl="file://$PROJECT_DIR$/HAAPYMovies-master.iml" filepath="$PROJECT_DIR$/HAAPYMovies-master.iml" />
+=======
+      <module fileurl="file://$PROJECT_DIR$/HAAPYMovies.iml" filepath="$PROJECT_DIR$/HAAPYMovies.iml" />
+>>>>>>> 65b3898917f07777e1cca3fbd1a3f3e3c7417b01
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>
   </component>

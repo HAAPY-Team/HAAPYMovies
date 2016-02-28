@@ -148,9 +148,12 @@ public class MovieListActivity extends AppCompatActivity {
 
     }
 
+<<<<<<< HEAD
     public void goToRater(View view){
         Intent intent = new Intent(this, Rater.class);
         startActivity(intent);
     }
 
+=======
+>>>>>>> 65b3898917f07777e1cca3fbd1a3f3e3c7417b01
 }

@@ -37,10 +37,13 @@
             android:name=".controllers.MovieListActivity"
             android:label="@string/title_activity_movie_list"
             android:theme="@style/AppTheme.NoActionBar"></activity>
+<<<<<<< HEAD
         <activity
             android:name=".controllers.Rater"
             android:label="Rater"
             android:theme="@style/AppTheme.NoActionBar"></activity>
+=======
+>>>>>>> 65b3898917f07777e1cca3fbd1a3f3e3c7417b01
     </application>
 
 </manifest>
