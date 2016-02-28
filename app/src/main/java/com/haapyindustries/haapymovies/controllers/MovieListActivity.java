@@ -91,7 +91,9 @@ public class MovieListActivity extends AppCompatActivity {
     }
     public void movieSearch(View view) {
         EditText searchbox = (EditText) findViewById(R.id.editText);
-        getReleases(searchbox.getText().toString());
+        if (!String.valueOf(searchbox.getText()).replace(" ", "").equals("")) {
+            getReleases(searchbox.getText().toString());
+        }
     }
     public void getReleases(String type) {
         String url = "http://api.rottentomatoes.com/api/public/v1.0/lists/movies/in_theaters.json?apikey=yedukp76ffytfuy24zsqk7f5";
