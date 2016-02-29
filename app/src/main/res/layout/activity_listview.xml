@@ -4,10 +4,6 @@
     android:layout_height="fill_parent"
     android:padding="10dip"
     android:textSize="16dip"
-<<<<<<< HEAD
     android:textStyle="bold"
     android:onClick="goToRater">
-=======
-    android:textStyle="bold" >
->>>>>>> 65b3898917f07777e1cca3fbd1a3f3e3c7417b01
 </TextView>
