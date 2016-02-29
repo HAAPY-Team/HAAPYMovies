@@ -102,7 +102,7 @@ public class MovieListActivity extends AppCompatActivity {
         } else if(type == "dvdREQ") {
             url = "http://api.rottentomatoes.com/api/public/v1.0/lists/dvds/new_releases.json?apikey=" + apiKey;
         } else {
-            url = "http://api.rottentomatoes.com/api/public/v1.0/movies.json?apikey="+apiKey+"&q=" + type;
+            url = "http://api.rottentomatoes.com/api/public/v1.0/movies.json?apikey="+apiKey+"&q=" + type.replaceAll("\\s+","%20");
         }
         Log.d("shit", "shit is happening");
 
