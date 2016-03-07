@@ -1,7 +1,10 @@
 package com.haapyindustries.haapymovies.models;
 
 import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 /**
  * Manages Users
@@ -12,6 +15,8 @@ import java.util.Map;
  */
 public class UserManager {
     private static Map<String, User> users = new HashMap<>();
+    private static Set<String> majors = new HashSet<>();
+
 
     private static User user;
 
@@ -24,6 +29,7 @@ public class UserManager {
      */
     public static void addUser(String username, String password, String major) {
         User user = new User(username, password, major);
+        majors.add(major);
         users.put(username, user);
     }
 
@@ -74,6 +80,18 @@ public class UserManager {
      */
     public static void logoutUser() {
         user = null;
+    }
+
+    public static String[] getMajors() {
+        return majors.toArray(new String[majors.size()]);
+    }
+
+    public static void addMajor(String major) {
+        majors.add(major);
+    }
+
+    public static String getUserMajor() {
+        return user.getMajor();
     }
 
 }

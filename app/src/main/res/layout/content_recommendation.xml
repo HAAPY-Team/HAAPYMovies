@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="com.haapyindustries.haapymovies.controllers.RecommendationActivity"
+    tools:showIn="@layout/activity_recommendation">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Select Major:"
+        android:id="@+id/textView8"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true" />
+
+    <Spinner
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/majorSpinner"
+        android:layout_below="@+id/textView8"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="23dp" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Get Recommendation"
+        android:id="@+id/majorSelectBtn"
+        android:layout_below="@+id/majorSpinner"
+        android:layout_centerHorizontal="true"
+        android:onClick="onGetRecommendationButtonClick" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Large Text"
+        android:id="@+id/recommendTitle"
+        android:layout_marginTop="69dp"
+        android:layout_below="@+id/majorSelectBtn"
+        android:layout_centerHorizontal="true"
+        android:visibility="invisible" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/rec1"
+        android:background="@android:mipmap/sym_def_app_icon"
+        android:visibility="invisible"
+        android:layout_below="@+id/recommendTitle"
+        android:layout_alignEnd="@+id/textView8"
+        android:layout_marginTop="90dp" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/rec2"
+        android:background="@android:mipmap/sym_def_app_icon"
+        android:alpha="1"
+        android:visibility="invisible"
+        android:layout_alignTop="@+id/rec1"
+        android:layout_toEndOf="@+id/rec1" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/rec3"
+        android:background="@android:mipmap/sym_def_app_icon"
+        android:alpha="1"
+        android:visibility="invisible"
+        android:layout_alignTop="@+id/rec2"
+        android:layout_toEndOf="@+id/rec2" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/rec4"
+        android:background="@android:mipmap/sym_def_app_icon"
+        android:alpha="1"
+        android:visibility="invisible"
+        android:layout_alignTop="@+id/rec3"
+        android:layout_toEndOf="@+id/rec3" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/rec5"
+        android:background="@android:mipmap/sym_def_app_icon"
+        android:alpha="1"
+        android:visibility="invisible"
+        android:layout_alignTop="@+id/rec4"
+        android:layout_toEndOf="@+id/rec4" />
+</RelativeLayout>

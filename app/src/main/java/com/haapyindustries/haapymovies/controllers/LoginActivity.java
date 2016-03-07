@@ -12,6 +12,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.haapyindustries.haapymovies.R;
+import com.haapyindustries.haapymovies.models.Ratings;
 import com.haapyindustries.haapymovies.models.UserManager;
 
 /**
@@ -35,14 +36,6 @@ public class LoginActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
     }
 
     /**
@@ -61,12 +54,13 @@ public class LoginActivity extends AppCompatActivity {
      * @param w
      */
     public void onLoginButtonClick(View w) {
+        Ratings.clearUserRatings();
         EditText userBox = (EditText) findViewById(R.id.user_box);
         EditText passBox = (EditText) findViewById(R.id.pass_box);
         String username = userBox.getText().toString();
         String password = passBox.getText().toString();
         if (UserManager.handleLoginRequest(username, password)) {
-            Intent intent = new Intent(this, MovieListActivity.class);
+            Intent intent = new Intent(this, HomeActivity.class);
             finish();
             startActivity(intent);
         } else {

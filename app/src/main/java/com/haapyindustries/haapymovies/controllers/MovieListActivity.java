@@ -7,6 +7,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListAdapter;
@@ -57,14 +58,6 @@ public class MovieListActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         queue = Volley.newRequestQueue(this);
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
 
         Button newRelease = (Button) findViewById(R.id.button3);
         Button newDVD = (Button) findViewById(R.id.button4);
@@ -137,6 +130,13 @@ public class MovieListActivity extends AppCompatActivity {
                         ArrayAdapter adapter = new ArrayAdapter(MovieListActivity.this, R.layout.activity_listview, movies);
                         ListView listView = (ListView) findViewById(R.id.mobile_list);
                         listView.setAdapter(adapter);
+                        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                            @Override
+                            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                                String item = ((TextView) view).getText().toString();
+                                goToRater(item);
+                            }
+                        });
 
                     }
                 }, new Response.ErrorListener() {
@@ -149,8 +149,9 @@ public class MovieListActivity extends AppCompatActivity {
         queue.add(joR);
 
     }
-    public void goToRater(View view){
+    public void goToRater(String movieName){
         Intent intent = new Intent(this, Rater.class);
+        intent.putExtra("movieName", movieName);
         startActivity(intent);
     }
 }

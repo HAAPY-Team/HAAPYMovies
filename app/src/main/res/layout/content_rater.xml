@@ -17,19 +17,20 @@
         android:layout_height="wrap_content"
         android:id="@+id/rat1"
         android:background="@android:mipmap/sym_def_app_icon"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentStart="true"
-        android:visibility="visible" />
+        android:visibility="invisible"
+        android:layout_above="@+id/ratingSpinner"
+        android:layout_toStartOf="@+id/rat2"
+        android:layout_marginBottom="23dp" />
 
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/rat2"
         android:background="@android:mipmap/sym_def_app_icon"
-        android:layout_alignParentTop="true"
-        android:layout_toStartOf="@+id/rat3"
         android:alpha="1"
-        android:visibility="invisible" />
+        android:visibility="invisible"
+        android:layout_alignTop="@+id/rat1"
+        android:layout_toStartOf="@+id/rat3" />
 
     <ImageView
         android:layout_width="wrap_content"
@@ -46,38 +47,20 @@
         android:layout_height="wrap_content"
         android:id="@+id/rat3"
         android:background="@android:mipmap/sym_def_app_icon"
-        android:layout_alignParentTop="true"
-        android:layout_toStartOf="@+id/rat4"
         android:alpha="1"
-        android:visibility="invisible" />
+        android:visibility="invisible"
+        android:layout_alignTop="@+id/rat4"
+        android:layout_toStartOf="@+id/rat4" />
 
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/rat5"
         android:background="@android:mipmap/sym_def_app_icon"
-        android:layout_alignTop="@+id/rat4"
-        android:layout_toEndOf="@+id/rat4"
         android:alpha="1"
-        android:visibility="invisible" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="Type Rating:"
-        android:id="@+id/textView2"
-        android:layout_above="@+id/ratingButton"
-        android:layout_toEndOf="@+id/rat2"
-        android:layout_marginBottom="10dp" />
-
-    <EditText
-        android:layout_width="30dp"
-        android:layout_height="wrap_content"
-        android:id="@+id/ratingField"
-        android:text="1"
-        android:layout_below="@+id/rat5"
-        android:layout_alignEnd="@+id/ratingButton" />
+        android:visibility="invisible"
+        android:layout_alignTop="@+id/rat4"
+        android:layout_toEndOf="@+id/rat4" />
 
     <Button
         style="?android:attr/buttonStyleSmall"
@@ -85,7 +68,103 @@
         android:layout_height="wrap_content"
         android:text="Submit Rating"
         android:id="@+id/ratingButton"
-        android:layout_below="@+id/ratingField"
-        android:layout_centerHorizontal="true"
-        android:clickable="true" />
+        android:clickable="true"
+        android:layout_marginBottom="82dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/orat1"
+        android:background="@android:mipmap/sym_def_app_icon"
+        android:visibility="invisible"
+        android:layout_above="@+id/textView7"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="44dp" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/orat2"
+        android:background="@android:mipmap/sym_def_app_icon"
+        android:alpha="1"
+        android:visibility="invisible"
+        android:layout_alignTop="@+id/orat1"
+        android:layout_alignStart="@+id/rat2" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/orat3"
+        android:background="@android:mipmap/sym_def_app_icon"
+        android:alpha="1"
+        android:visibility="invisible"
+        android:layout_alignTop="@+id/orat2"
+        android:layout_toStartOf="@+id/orat4" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/orat4"
+        android:background="@android:mipmap/sym_def_app_icon"
+        android:alpha="1"
+        android:visibility="invisible"
+        android:layout_alignTop="@+id/orat3"
+        android:layout_toEndOf="@+id/rat3" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/orat5"
+        android:background="@android:mipmap/sym_def_app_icon"
+        android:alpha="1"
+        android:visibility="invisible"
+        android:layout_alignTop="@+id/orat4"
+        android:layout_alignStart="@+id/rat5" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Large Text"
+        android:id="@+id/movieTitle"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
+
+    <Spinner
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/ratingSpinner"
+        android:layout_above="@+id/ratingButton"
+        android:layout_alignStart="@+id/rat5" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Select Rating"
+        android:id="@+id/textView9"
+        android:layout_below="@+id/rat1"
+        android:layout_alignEnd="@+id/rat3" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Your Rating:"
+        android:id="@+id/textView7"
+        android:layout_above="@+id/rat1"
+        android:layout_alignStart="@+id/rat1"
+        android:layout_marginBottom="25dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Overall Rating:"
+        android:id="@+id/textView6"
+        android:layout_above="@+id/orat1"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="35dp" />
 </RelativeLayout>
