@@ -14,6 +14,8 @@
     <string name="title_activity_movie_list">MovieListActivity</string>
     <string name="title_activity_recommendation">RecommendationActivity</string>
     <string name="title_activity_home">HomeActivity</string>
+    <string name="title_activity_admin_user_list">AdminUserList</string>
+    <string name="title_activity_admin_user_profile_view">AdminUserProfileView</string>
     <!--<string name="register_button">Register</string>-->
     <!--<string name="login_button">Login</string>-->
 </resources>

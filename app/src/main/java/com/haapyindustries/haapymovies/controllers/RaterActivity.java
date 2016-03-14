@@ -19,7 +19,7 @@ import com.haapyindustries.haapymovies.models.RatingData;
 import com.haapyindustries.haapymovies.models.Ratings;
 import com.haapyindustries.haapymovies.models.UserManager;
 
-public class Rater extends AppCompatActivity implements View.OnClickListener {
+public class RaterActivity extends AppCompatActivity implements View.OnClickListener {
     //Global identifiers
     Spinner value;
     ImageView rat1;

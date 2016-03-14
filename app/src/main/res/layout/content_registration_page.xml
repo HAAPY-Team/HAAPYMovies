@@ -62,8 +62,10 @@
         android:text="@string/register_page_cancel_button"
         android:id="@+id/button2"
         android:onClick="onCancelButtonClick"
-        android:layout_centerVertical="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignBaseline="@+id/button"
+        android:layout_alignBottom="@+id/button"
+        android:layout_toEndOf="@+id/button"
+        android:layout_marginStart="82dp" />
 
     <TextView
         android:layout_width="wrap_content"

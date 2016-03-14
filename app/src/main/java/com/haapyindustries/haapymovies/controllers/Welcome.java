@@ -1,4 +1,4 @@
-package com.haapyindustries.haapymovies;
+package com.haapyindustries.haapymovies.controllers;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 
+import com.haapyindustries.haapymovies.R;
 import com.haapyindustries.haapymovies.controllers.LoginActivity;
 import com.haapyindustries.haapymovies.controllers.RegistrationPageActivity;
 import com.haapyindustries.haapymovies.models.UserManager;

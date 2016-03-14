@@ -1,5 +1,12 @@
 package com.haapyindustries.haapymovies.models;
 
+import android.util.Log;
+
+import com.haapyindustries.haapymovies.enums.UserStatus;
+import com.haapyindustries.haapymovies.enums.UserType;
+
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -33,6 +40,12 @@ public class UserManager {
         users.put(username, user);
     }
 
+    public static void addAdmin(String username, String password, String major) {
+        User user = new User(username, password, major, UserType.ADMIN);
+        majors.add(major);
+        users.put(username, user);
+    }
+
     /**
      * Handles login requests
      * logs a User in if their username and password are valid
@@ -42,17 +55,32 @@ public class UserManager {
      * @param password
      * @return True if user was logged in, False otherwise
      */
-    public static boolean handleLoginRequest(String username, String password) {
+    public static User handleLoginRequest(String username, String password) {
         User curr = users.get(username);
-        //is username valid
         if (curr == null) {
-            return false;
-        //is password correct for user
+            Log.d("Login Failed", "wrong username");
+            return null;
+        } else if (curr.getUserStatus() == UserStatus.LOCKED) {
+            Log.d("Login Failed", "account locked");
+            return curr;
+        } else if (curr.getUserStatus() == UserStatus.BANNED) {
+            Log.d("Login Failed", "account banned");
+            return curr;
         } else if (curr.checkPass(password)) {
+            Log.d("Login Success", "login success");
             user = curr;
-            return true;
+            curr.setLoginTries(0);
+            return curr;
+        } else if (curr.getUserType() != UserType.ADMIN){
+            curr.setLoginTries(curr.getLoginTries() + 1);
+            Log.d("Login Failed", "Wrong Password");
+            if (curr.getLoginTries() >= 3) {
+                curr.setStatus(UserStatus.LOCKED);
+                Log.d("Login Failed", "User is now locked");
+            }
+            return curr;
         } else {
-            return false;
+            return curr;
         }
     }
 
@@ -75,6 +103,10 @@ public class UserManager {
         return user;
     }
 
+    public static List<User> getUsers() {
+        return new ArrayList<>(users.values());
+    }
+
     /**
      * Logs a User out
      */
@@ -92,6 +124,10 @@ public class UserManager {
 
     public static String getUserMajor() {
         return user.getMajor();
+    }
+
+    public static User getUser(String username) {
+        return users.get(username);
     }
 
 }
