@@ -24,5 +24,6 @@ public class MyApplication extends Application{
         UserManager.addUser("j", "j", "cs");
         UserManager.addUser("y", "y", "cs");
         UserManager.addUser("p", "p", "cs");
+        UserManager.addUser("aaron", "weed", "cs");
     }
 }

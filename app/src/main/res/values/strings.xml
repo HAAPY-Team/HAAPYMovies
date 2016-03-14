@@ -11,11 +11,11 @@
     <string name="register_page_cancel_button">Cancel</string>
     <string name="register_page_major">Major</string>
     <string name="profile_page_edit_button">Edit</string>
-    <string name="title_activity_movie_list">MovieListActivity</string>
-    <string name="title_activity_recommendation">RecommendationActivity</string>
-    <string name="title_activity_home">HomeActivity</string>
-    <string name="title_activity_admin_user_list">AdminUserList</string>
-    <string name="title_activity_admin_user_profile_view">AdminUserProfileView</string>
+    <string name="title_activity_movie_list">Movies</string>
+    <string name="title_activity_recommendation">Recommendations</string>
+    <string name="title_activity_home">Home</string>
+    <string name="title_activity_admin_user_list">Users</string>
+    <string name="title_activity_admin_user_profile_view">User Moderate</string>
     <!--<string name="register_button">Register</string>-->
     <!--<string name="login_button">Login</string>-->
 </resources>
