@@ -12,18 +12,18 @@ import com.haapyindustries.haapymovies.controllers.RegistrationPageActivity;
 import com.haapyindustries.haapymovies.models.UserManager;
 
 /**
- * Welcome Page Activity
+ * Welcome Activity
  * displays welcome page and handles associated button clicks
  *
- * @version M4
+ * @version M8
  * @author Yuanhan Pan, pjztam
  */
-public class Welcome extends AppCompatActivity {
+public class WelcomeActivity extends AppCompatActivity {
 
     /**
-     * Sets up Welcome Page
+     * Sets up Activity
      *
-     * @param savedInstanceState
+     * @param savedInstanceState Bundle with info about Activity
      */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,7 +37,7 @@ public class Welcome extends AppCompatActivity {
      * Handles Login Button clicks
      * goes to Login page
      *
-     * @param w
+     * @param w View that was clicked
      */
     public void onLoginButtonClick(View w) {
         Intent intent = new Intent(this, LoginActivity.class);
@@ -47,24 +47,11 @@ public class Welcome extends AppCompatActivity {
     /**
      * Handles Registration Button clicks
      * goes to Registration page
-     * @param w
+     *
+     * @param w View that was clicked
      */
     public void onRegistrationButtonClick(View w) {
         Intent intent = new Intent(this, RegistrationPageActivity.class);
         startActivity(intent);
     }
-
-    @Override
-    public void onPause() {
-        super.onPause();
-        Log.d("**MYAPP**", "Pausing the opening screen");
-    }
-
-    public void onResume() {
-        super.onResume();
-        Log.d("**MYAPP**", "Resuming the opening screen");
-        System.out.println("resuming");
-    }
-
-
 }

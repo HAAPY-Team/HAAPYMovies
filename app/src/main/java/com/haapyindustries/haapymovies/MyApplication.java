@@ -5,15 +5,24 @@ import android.app.Application;
 import com.haapyindustries.haapymovies.models.UserManager;
 
 /**
- * Created by pjztam on 3/13/2016.
+ * Main Application
+ *
+ * @author pjztam
+ * @version M8
  */
 public class MyApplication extends Application{
+
+    /**
+     * Creates Application
+     *
+     * Adds in a bunch of sample Users
+     */
     @Override
     public void onCreate() {
         super.onCreate();
-        UserManager.addAdmin("admin", "p", "cs");
-        UserManager.addUser("jinsong", "j", "cs");
-        UserManager.addUser("yuanhan", "y", "cs");
-        UserManager.addUser("patrick", "p", "cs");
+        UserManager.addAdmin("a", "a", "cs");
+        UserManager.addUser("j", "j", "cs");
+        UserManager.addUser("y", "y", "cs");
+        UserManager.addUser("p", "p", "cs");
     }
 }

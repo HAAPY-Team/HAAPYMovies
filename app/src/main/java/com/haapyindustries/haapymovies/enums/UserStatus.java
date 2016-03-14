@@ -1,7 +1,11 @@
 package com.haapyindustries.haapymovies.enums;
 
 /**
- * Created by pjztam on 3/13/2016.
+ * User Status Enum
+ * Contains the possible statuses of a User
+ *
+ * @author pjztam
+ * @version M8
  */
 public enum UserStatus {
     ACTIVE("Active"),
@@ -10,10 +14,20 @@ public enum UserStatus {
 
     private String status;
 
+    /**
+     * Enum Constructor
+     *
+     * @param status in human readable format
+     */
     UserStatus(String status) {
         this.status = status;
     }
 
+    /**
+     * Returns the Status as a String
+     *
+     * @return a human readable String representation of the Status
+     */
     @Override
     public String toString() {
         return this.status;

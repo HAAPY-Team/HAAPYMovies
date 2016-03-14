@@ -4,11 +4,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
-import android.widget.TextView;
 
 import com.haapyindustries.haapymovies.R;
 import com.haapyindustries.haapymovies.models.User;
@@ -17,10 +15,23 @@ import com.haapyindustries.haapymovies.models.UserManager;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Admin User List Activity
+ * lists Users in a ListView, and allows Admins to change ban/unlock them
+ *
+ * @author pjztam
+ * @version M8
+ */
 public class AdminUserListActivity extends AppCompatActivity {
 
     private UserAdapter userAdapter;
 
+    /**
+     * Sets up Activity
+     * sets up and binds adapter to ListView
+     *
+     * @param savedInstanceState Bundle with info about Activity
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,12 +53,23 @@ public class AdminUserListActivity extends AppCompatActivity {
         });
     }
 
+    /**
+     * Handles Clicks on a User in the ListView
+     * Opens an Admin User Profile View activity
+     * for the User that was clicked on
+     *
+     * @param item username of User that was clicked on
+     */
     public void goToProfileView(String item) {
-        Intent intent = new Intent(this, AdminUserProfileView.class);
+        Intent intent = new Intent(this, AdminUserProfileViewActivity.class);
         intent.putExtra("username", item);
         startActivity(intent);
     }
 
+    /**
+     * Resumes Activity
+     * refreshes Adapter
+     */
     @Override
     protected void onResume() {
         super.onResume();

@@ -19,6 +19,14 @@ import com.haapyindustries.haapymovies.models.RatingData;
 import com.haapyindustries.haapymovies.models.Ratings;
 import com.haapyindustries.haapymovies.models.UserManager;
 
+/**
+ * Rater Activity
+ * Shows Movie Rating Screen
+ * Allows Users to Rate movies and see the average rating
+ *
+ * @author Henry Leung, Yuanhan Pan
+ * @version M8
+ */
 public class RaterActivity extends AppCompatActivity implements View.OnClickListener {
     //Global identifiers
     Spinner value;
@@ -34,6 +42,12 @@ public class RaterActivity extends AppCompatActivity implements View.OnClickList
     ImageView orat5;
     Button submit;
 
+    /**
+     * Handles Rate button Clicks
+     * Stores Rating and updates average rating
+     *
+     * @param view View that was clicked on
+     */
     @Override
     public void onClick(View view) {
         String userInput = value.getSelectedItem().toString(); //get text from field
@@ -89,6 +103,12 @@ public class RaterActivity extends AppCompatActivity implements View.OnClickList
         }
     }
 
+    /**
+     * Sets up Activity
+     * Displays current Movie rating
+     *
+     * @param savedInstanceState Bundle with info about Activity
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         Intent intent = getIntent();
@@ -182,6 +202,12 @@ public class RaterActivity extends AppCompatActivity implements View.OnClickList
         submit.setOnClickListener(this); //set action listner
     }
 
+    /**
+     * Validates Ratings
+     *
+     * @param str String to validate
+     * @return True if the String is Numeric, False otherwise
+     */
     private static boolean isNumeric(String str)
     {
         return str.matches("-?\\d+(\\.\\d+)?");  //match a number with optional '-' and decimal.

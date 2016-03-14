@@ -16,7 +16,15 @@ import com.haapyindustries.haapymovies.models.UserManager;
 
 import org.w3c.dom.Text;
 
-public class AdminUserProfileView extends AppCompatActivity {
+/**
+ * Admin User Profile View Activity
+ * Opens up User info page
+ * allows Admin to ban/unban/unlock a User
+ *
+ * @author pjztam
+ * @version M8
+ */
+public class AdminUserProfileViewActivity extends AppCompatActivity {
 
     private User user;
     private Button ban;
@@ -24,6 +32,13 @@ public class AdminUserProfileView extends AppCompatActivity {
     private TextView type;
     private TextView status;
 
+    /**
+     * Sets up Activity
+     * Displays information about User
+     * changes text/enables/disables buttons depending on User state
+     *
+     * @param savedInstanceState Bundle with info about Activity
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,6 +61,12 @@ public class AdminUserProfileView extends AppCompatActivity {
         unlock.setEnabled(user.getUserStatus() == UserStatus.LOCKED);
     }
 
+    /**
+     * Handles Ban Button clicks
+     * bans/unbans a User and resets text on button and info page
+     *
+     * @param w View that was clicked
+     */
     public void onBanButtonClick(View w) {
         if(user.getUserStatus() != UserStatus.BANNED) {
             user.setStatus(UserStatus.BANNED);
@@ -61,6 +82,12 @@ public class AdminUserProfileView extends AppCompatActivity {
         }
     }
 
+    /**
+     * Handles Unlock Button clicks
+     * unlocks a User and resets text on button and info page
+     *
+     * @param w View that was clicked
+     */
     public void onUnlockButtonClick(View w) {
         user.setStatus(UserStatus.ACTIVE);
         status.setText("Active");

@@ -14,7 +14,11 @@ import com.haapyindustries.haapymovies.models.User;
 import java.util.ArrayList;
 
 /**
- * Created by pjztam on 3/13/2016.
+ * User Adaptor
+ * Converts a User to a View that can be used by ListView
+ *
+ * @author pjztam
+ * @version M8
  */
 public class UserAdapter extends ArrayAdapter<User> {
 
@@ -22,6 +26,13 @@ public class UserAdapter extends ArrayAdapter<User> {
     private final ArrayList<User> data;
     private final int layoutResourceId;
 
+    /**
+     * Constructs the UserAdapter
+     *
+     * @param context The current context
+     * @param layoutResourceId The resource ID for a layout file containing a layout to use when instantiating views.
+     * @param data The Data to be displayed
+     */
     public UserAdapter(Context context, int layoutResourceId, ArrayList<User> data) {
         super(context, layoutResourceId, data);
         this.context = context;
@@ -29,6 +40,14 @@ public class UserAdapter extends ArrayAdapter<User> {
         this.layoutResourceId = layoutResourceId;
     }
 
+    /**
+     *  Makes a View for the given data item
+     *
+     * @param position The position of the item within the adapter's data set of the item whose view we want.
+     * @param convertView The old view to reuse, if possible.
+     * @param parent The parent that this view will eventually be attached to
+     * @return A View corresponding to the data at the specified position.
+     */
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         View row = convertView;
@@ -59,6 +78,9 @@ public class UserAdapter extends ArrayAdapter<User> {
         return row;
     }
 
+    /**
+     * Holds Data for each View
+     */
     static class ViewHolder
     {
         TextView textView1;

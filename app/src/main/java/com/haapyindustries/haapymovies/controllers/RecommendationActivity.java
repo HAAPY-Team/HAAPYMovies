@@ -17,6 +17,13 @@ import com.haapyindustries.haapymovies.models.UserManager;
 
 import java.util.ArrayList;
 
+/**
+ * Recommendation Activity
+ * Shows recommendations for a given major
+ *
+ * @author Yuanhan Pan
+ * @version M8
+ */
 public class RecommendationActivity extends AppCompatActivity {
 
     ImageView rec1;
@@ -27,6 +34,11 @@ public class RecommendationActivity extends AppCompatActivity {
     TextView recommendText;
     Spinner majorSpinner;
 
+    /**
+     * Sets up Activity
+     *
+     * @param savedInstanceState Bundle with info about Activity
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -52,6 +64,12 @@ public class RecommendationActivity extends AppCompatActivity {
         recommendText.setVisibility(View.INVISIBLE);
     }
 
+    /**
+     * Handles Recommendation Button Clicks
+     * Shows a recommended movie based on a given Major
+     *
+     * @param v View that was clicked
+     */
     public void onGetRecommendationButtonClick(View v) {
         rec1.setVisibility(View.INVISIBLE);
         rec2.setVisibility(View.INVISIBLE);

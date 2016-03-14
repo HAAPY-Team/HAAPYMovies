@@ -5,7 +5,11 @@ import java.util.Map;
 import java.util.Stack;
 
 /**
- * Created by Yuanhan on 3/6/2016.
+ * Major Ratings Model
+ * Contains and Handles Movie Ratings
+ *
+ * @author Yuanhan Pan
+ * @version M8
  */
 public class MajorRatings {
     private Stack<String> topMovies;
@@ -14,12 +18,24 @@ public class MajorRatings {
 
     public String major;
 
+    /**
+     * Constructor
+     * Initializes instance variables
+     *
+     * @param major Major that these ratings are for
+     */
     public MajorRatings(String major) {
         this.major = major;
         topRating = new Stack<Integer>();
         topMovies = new Stack<String>();
     }
 
+    /**
+     * Adds a Rating to the Database
+     *
+     * @param movie Rating is For
+     * @param rating for a Movie
+     */
     public void addRating(String movie, int rating) {
         RatingData data = new RatingData();
         if (RatingMap.get(movie) == null) {
@@ -56,6 +72,12 @@ public class MajorRatings {
         }
     }
 
+    /**
+     * Updates an existing movie's rating
+     *
+     * @param movie Rating is for
+     * @param rating ratinf of the Movie
+     */
     public void updateRating(String movie, int rating) {
         RatingData data = new RatingData();
         if (RatingMap.get(movie) == null) {
@@ -92,14 +114,30 @@ public class MajorRatings {
         }
     }
 
+    /**
+     * Gets Rating of the Movie
+     *
+     * @param movie Rating is for
+     * @return movie's Rating
+     */
     public RatingData getRating(String movie) {
         return RatingMap.get(movie);
     }
 
+    /**
+     * Gets the Top Rated Movie
+     *
+     * @return name of the Top Rated movie
+     */
     public String getTopMovieName() {
         return topMovies.peek();
     }
 
+    /**
+     * Gets the Top Rating
+     *
+     * @return rating of the Top Rated movie
+     */
     public int getTopRating() {
         return topRating.peek();
     }

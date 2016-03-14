@@ -18,14 +18,14 @@ import com.haapyindustries.haapymovies.models.UserManager;
  * Shows and allows editing of User Profile
  *
  * @author Yuanhan Pan, pjztam
- * @version M4
+ * @version M8
  */
 public class ProfilePageActivity extends AppCompatActivity {
 
     /**
-     * Sets up Profile Page
+     * Sets up Activity
      *
-     * @param savedInstanceState
+     * @param savedInstanceState Bundle with info about Activity
      */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,23 +42,25 @@ public class ProfilePageActivity extends AppCompatActivity {
     }
 
     /**
+     * Handles Logout Button clicks
      * Logs user out
      * Shows welcome screen
      *
-     * @param w
+     * @param w View that was clicked
      */
     public void onLogoutButtonClick(View w) {
         UserManager.logoutUser();
-        Intent intent = new Intent(this, Welcome.class);
+        Intent intent = new Intent(this, WelcomeActivity.class);
         startActivity(intent);
         finish();
     }
 
     /**
+     * Handles Edit Button Clicks
      * Edits user info
      * Displays "User Edited" Toast
      *
-     * @param w
+     * @param w View that was clicked
      */
     public void onEditButtonClick(View w) {
         User user = UserManager.getLoggedInUser();

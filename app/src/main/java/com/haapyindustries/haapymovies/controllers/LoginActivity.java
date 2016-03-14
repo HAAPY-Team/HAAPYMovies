@@ -21,15 +21,15 @@ import com.haapyindustries.haapymovies.models.UserManager;
  * Login Page Activity
  * Shows Login Page and handles button clicks on it
  *
- * @author Yuanhan Pan
- * @version M4
+ * @author Yuanhan Pan, Patrick Tam
+ * @version M8
  */
 public class LoginActivity extends AppCompatActivity {
 
     /**
-     * Sets up Login page
+     * Sets up Activity
      *
-     * @param savedInstanceState
+     * @param savedInstanceState Bundle with info about Activity
      */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,19 +41,21 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     /**
-     * Cancels login, ends activity
+     * Handles Cancel Button Clicks
+     * Cancels login, ends current Activity
      *
-     * @param w
+     * @param w View that was clicked
      */
     public void onCancelButtonClick(View w) {
         finish();
     }
 
     /**
+     * Handles Login Button clicks
      * Logs in User and goes to profile page on success
-     * Displays "Login Failed" Toast on failure
+     * Displays verious error messages if login fails
      *
-     * @param w
+     * @param w View that was clicked
      */
     public void onLoginButtonClick(View w) {
         Ratings.clearUserRatings();

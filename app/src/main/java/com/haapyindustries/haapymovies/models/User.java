@@ -8,7 +8,7 @@ import com.haapyindustries.haapymovies.enums.UserType;
  * Stores Data pertaining to Users, and holds associated methods
  *
  * @author Yuanhan Pan, pjztam
- * @version M4
+ * @version M8
  */
 public class User {
     private String username;
@@ -33,6 +33,14 @@ public class User {
         this.userStatus = UserStatus.ACTIVE;
     }
 
+    /**
+     * Creats a new User
+     *
+     * @param username
+     * @param password
+     * @param major
+     * @param userType
+     */
     public User(String username, String password, String major, UserType userType) {
         this.username = username;
         this.password = password;
@@ -78,14 +86,29 @@ public class User {
         return this.major;
     }
 
+    /**
+     * Gets User Type
+     *
+     * @return user type
+     */
     public UserType getUserType() {
         return this.userType;
     }
 
+    /**
+     * Gets User Status
+     *
+     * @return user status
+     */
     public UserStatus getUserStatus() {
         return this.userStatus;
     }
 
+    /**
+     * Sets a User's Status
+     *
+     * @param status of User
+     */
     public void setStatus(UserStatus status) {
         this.userStatus = status;
     }
@@ -107,10 +130,20 @@ public class User {
         this.major = major;
     }
 
+    /**
+     * Gets the Number of Login attempts
+     *
+     * @return number of login tries
+     */
     public int getLoginTries() {
         return this.loginTries;
     }
 
+    /**
+     * Sets the Number of Login attempts
+     *
+     * @param tries The new number of Tries
+     */
     public void setLoginTries(int tries) {
         this.loginTries = tries;
     }

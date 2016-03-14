@@ -1,7 +1,11 @@
 package com.haapyindustries.haapymovies.enums;
 
 /**
- * Created by pjztam on 3/13/2016.
+ * User Type Enum
+ * Contains the possible Types of a User
+ *
+ * @author pjztam
+ * @version M8
  */
 public enum UserType {
     USER("User"),
@@ -9,10 +13,20 @@ public enum UserType {
 
     private String type;
 
+    /**
+     * Enum Constructor
+     *
+     * @param type in human readable format
+     */
     UserType(String type) {
         this.type = type;
     }
 
+    /**
+     * Returns the Status as a String
+     *
+     * @return a human readable String representation of the Status
+     */
     @Override
     public String toString() {
         return this.type;

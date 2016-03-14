@@ -18,7 +18,7 @@ import java.util.Set;
  * Holds Users and manipulates Users
  *
  * @author Yuanhan Pan, pjztam
- * @version M4
+ * @version M8
  */
 public class UserManager {
     private static Map<String, User> users = new HashMap<>();
@@ -40,6 +40,12 @@ public class UserManager {
         users.put(username, user);
     }
 
+    /**
+     * Adds an Admin to the Database
+     * @param username
+     * @param password
+     * @param major
+     */
     public static void addAdmin(String username, String password, String major) {
         User user = new User(username, password, major, UserType.ADMIN);
         majors.add(major);
@@ -49,11 +55,11 @@ public class UserManager {
     /**
      * Handles login requests
      * logs a User in if their username and password are valid
-     * returns false if that is not the case
+     * returns an error if credentials are invalid or user can't login
      *
      * @param username
      * @param password
-     * @return True if user was logged in, False otherwise
+     * @return Null if User doesn't exist, User otherwise
      */
     public static User handleLoginRequest(String username, String password) {
         User curr = users.get(username);
@@ -103,6 +109,11 @@ public class UserManager {
         return user;
     }
 
+    /**
+     * Gets all Users
+     *
+     * @return a List of all Users
+     */
     public static List<User> getUsers() {
         return new ArrayList<>(users.values());
     }
@@ -114,20 +125,40 @@ public class UserManager {
         user = null;
     }
 
+    /**
+     * Gets all Majors
+     *
+     * @return a List of all Majors
+     */
     public static String[] getMajors() {
         return majors.toArray(new String[majors.size()]);
     }
 
+    /**
+     * Adds a Major to the List
+     *
+     * @param major to add
+     */
     public static void addMajor(String major) {
         majors.add(major);
     }
 
+    /**
+     * Gets the current logged in User's Major
+     *
+     * @return current User's major
+     */
     public static String getUserMajor() {
         return user.getMajor();
     }
 
+    /**
+     * Gets a User
+     *
+     * @param username of User to get
+     * @return User
+     */
     public static User getUser(String username) {
         return users.get(username);
     }
-
 }

@@ -64,7 +64,7 @@ public class RegistrationPageActivity extends AppCompatActivity {
             t.show();
         } else {
             UserManager.addUser(username, password, major);
-            Intent intent = new Intent(this, Welcome.class);
+            Intent intent = new Intent(this, WelcomeActivity.class);
             finish();
             startActivity(intent);
         }
