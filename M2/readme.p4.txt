@@ -1,1 +1,0 @@
-My name is Adrian Rodriguez-Febres, and my email is aorf3@gatech.edu.
