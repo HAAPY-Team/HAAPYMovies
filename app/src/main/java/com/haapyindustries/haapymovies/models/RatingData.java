@@ -7,6 +7,55 @@ package com.haapyindustries.haapymovies.models;
 public class RatingData {
     public int currentRating;
     public int ratedUsers;
+    private String major;
+    private String username;
+    private String movie;
+    private int rating;
+    private int rid;
+
+    public int getRid() {
+        return rid;
+    }
+
+    public void setRid(int rid) {
+        this.rid = rid;
+    }
+
+    public void setRid(long rid) {
+        this.rid = (int) rid;
+    }
+
+    public String getMajor() {
+        return major;
+    }
+
+    public void setMajor(String major) {
+        this.major = major;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getMovie() {
+        return movie;
+    }
+
+    public void setMovie(String movie) {
+        this.movie = movie;
+    }
+
+    public int getRating() {
+        return rating;
+    }
+
+    public void setRating(int rating) {
+        this.rating = rating;
+    }
 
     /**
      * Constructs an Empty RatingData Object

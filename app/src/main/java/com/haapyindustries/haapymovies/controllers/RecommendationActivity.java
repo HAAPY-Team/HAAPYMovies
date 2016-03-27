@@ -12,8 +12,10 @@ import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.haapyindustries.haapymovies.R;
+import com.haapyindustries.haapymovies.models.RatingData;
 import com.haapyindustries.haapymovies.models.Ratings;
 import com.haapyindustries.haapymovies.models.UserManager;
+import com.haapyindustries.haapymovies.providers.Database;
 
 import java.util.ArrayList;
 
@@ -78,13 +80,15 @@ public class RecommendationActivity extends AppCompatActivity {
         rec5.setVisibility(View.INVISIBLE);
         recommendText.setVisibility(View.INVISIBLE);
         String major = majorSpinner.getSelectedItem().toString();
-        ArrayList<String> topMovie = Ratings.getReccommendationByMajor(major);
+        Database db = new Database(getBaseContext());
+        RatingData topMovie = db.getRecommendationForMajor(major);
+        db.close();
         recommendText.setVisibility(View.VISIBLE);
         if (topMovie == null) {
             recommendText.setText("No Recommendations Found for any Movies by " + major + " Majors");
         } else {
-            recommendText.setText(topMovie.get(0));
-            int rating = Integer.parseInt(topMovie.get(1));
+            recommendText.setText(topMovie.getMovie());
+            int rating = topMovie.getRating();
             switch (rating) {
                 case 1:
                     rec1.setVisibility(View.VISIBLE);

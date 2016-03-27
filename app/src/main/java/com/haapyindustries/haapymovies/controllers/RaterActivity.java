@@ -17,7 +17,9 @@ import android.widget.Button;
 import com.haapyindustries.haapymovies.R;
 import com.haapyindustries.haapymovies.models.RatingData;
 import com.haapyindustries.haapymovies.models.Ratings;
+import com.haapyindustries.haapymovies.models.User;
 import com.haapyindustries.haapymovies.models.UserManager;
+import com.haapyindustries.haapymovies.providers.Database;
 
 /**
  * Rater Activity
@@ -58,8 +60,27 @@ public class RaterActivity extends AppCompatActivity implements View.OnClickList
         else {
             int ratingNumber = Integer.parseInt(userInput);
             Intent intent = getIntent();
+            String major = UserManager.getUserMajor();
+            String username = UserManager.getLoggedInUser().getUsername();
             String movieName = intent.getStringExtra("movieName");
-            Ratings.addRating(movieName, ratingNumber);
+
+            Database db = new Database(getBaseContext());
+            RatingData rating = db.getUserRatingForMovie(username, movieName);
+
+
+            if (rating != null) {
+                rating.setRating(ratingNumber);
+                db.updatRating(rating);
+            } else {
+                rating = new RatingData();
+                rating.setRating(ratingNumber);
+                rating.setMajor(major);
+                rating.setUsername(username);
+                rating.setMovie(movieName);
+                db.addRating(rating);
+            }
+            db.close();
+            //Ratings.addRating(movieName, ratingNumber);
             //cases
             if (userInput.equals("1")) { //case 1
                 rat1.setVisibility(View.VISIBLE);
@@ -113,8 +134,19 @@ public class RaterActivity extends AppCompatActivity implements View.OnClickList
     protected void onCreate(Bundle savedInstanceState) {
         Intent intent = getIntent();
         String movieName = intent.getStringExtra("movieName");
-        RatingData orating = Ratings.getOverallRating(movieName);
-        Integer urating = Ratings.getUserRating(movieName);
+        String major = UserManager.getUserMajor();
+        String username = UserManager.getLoggedInUser().getUsername();
+        Database db = new Database(getBaseContext());
+
+        int orating = db.getMajorRatingForMovie(major, movieName);
+        RatingData userRating = db.getUserRatingForMovie(username, movieName);
+        int urating = 0;
+        if (userRating != null) {
+            urating = userRating.getRating();
+        }
+        db.close();
+        //RatingData orating = Ratings.getOverallRating(movieName);
+        //Integer urating = Ratings.getUserRating(movieName);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_rater);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -139,8 +171,8 @@ public class RaterActivity extends AppCompatActivity implements View.OnClickList
         submit = (Button) findViewById(R.id.ratingButton);
         setSupportActionBar(toolbar);
 
-        if (orating != null) {
-            switch (orating.currentRating) {
+        if (orating != 0) {
+            switch (orating) {
                 case 1:
                     orat1.setVisibility(View.VISIBLE);
                     break;
@@ -169,7 +201,7 @@ public class RaterActivity extends AppCompatActivity implements View.OnClickList
             }
         }
 
-        if (urating != null) {
+        if (urating != 0) {
             switch (urating) {
                 case 1:
                     rat1.setVisibility(View.VISIBLE);
@@ -212,4 +244,6 @@ public class RaterActivity extends AppCompatActivity implements View.OnClickList
     {
         return str.matches("-?\\d+(\\.\\d+)?");  //match a number with optional '-' and decimal.
     }
+
+
 }

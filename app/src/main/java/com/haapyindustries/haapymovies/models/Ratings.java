@@ -17,6 +17,9 @@ public class Ratings {
     private static Map<String, Integer> UserRatingMap = new HashMap<>();
     private static Map<String, MajorRatings> MajorMap = new HashMap<>();
 
+
+
+
     /**
      * Adds a Rating for a specified Movie
      *

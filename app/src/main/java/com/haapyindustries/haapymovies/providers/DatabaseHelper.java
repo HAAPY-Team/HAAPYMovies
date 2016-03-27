@@ -18,8 +18,15 @@ public class DatabaseHelper extends SQLiteOpenHelper{
     public static final String  USER_COLUMN_USERSTATUS   = "user_status";
     public static final String  USER_COLUMN_LOGINTRIES   = "login_tries";
 
+    public static final String RATINGS_TABLE_NAME = "Ratings";
+    public static final String RATINGS_COLUMN_RID = "rid";
+    public static final String RATINGS_COLUMN_USERNAME = "username";
+    public static final String RATINGS_COLUMN_MAJOR = "major";
+    public static final String RATINGS_COLUMN_RATING = "rating";
+    public static final String RATINGS_COLUMN_MOVIENAME = "movie_name";
+
     private static final String DATABASE_NAME            = "haapymovies.db";
-    private static final int    DATABASE_VERSION         = 1;
+    private static final int    DATABASE_VERSION         = 2;
 
     public DatabaseHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -38,6 +45,15 @@ public class DatabaseHelper extends SQLiteOpenHelper{
             USER_COLUMN_USERSTATUS  + " text not null," +
             USER_COLUMN_LOGINTRIES  + " int" +
             ");"
+        );
+        db.execSQL(
+                "CREATE TABLE " + RATINGS_TABLE_NAME + " (" +
+                        RATINGS_COLUMN_RID + " integer primary key autoincrement," +
+                        RATINGS_COLUMN_USERNAME + " text not null," +
+                        RATINGS_COLUMN_MOVIENAME + " text not null," +
+                        RATINGS_COLUMN_MAJOR + " text not null," +
+                        RATINGS_COLUMN_RATING + " int" +
+                        ");"
         );
     }
 
