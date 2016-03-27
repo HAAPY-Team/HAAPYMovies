@@ -6,7 +6,12 @@ import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
 /**
- * Created by pjztam on 3/26/2016.
+ * Database Helper Service Provider
+ * handles connections to the Database
+ * performs special actions like create/upgrade db
+ *
+ * @author pjztam, Yuanhan Pan
+ * @version M9
  */
 public class DatabaseHelper extends SQLiteOpenHelper{
     public static final String  USER_TABLE_NAME          = "Users";
@@ -28,10 +33,22 @@ public class DatabaseHelper extends SQLiteOpenHelper{
     private static final String DATABASE_NAME            = "haapymovies.db";
     private static final int    DATABASE_VERSION         = 2;
 
+    /**
+     * Creates DatabaseHelper
+     * just calls the super class constructor
+     *
+     * @param context currrent Context
+     */
     public DatabaseHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
 
+    /**
+     * Sets up Database (if it hasn't been initialized)
+     * creates a bunch of Tables
+     *
+     * @param db empty SQLite database
+     */
     @Override
     public void onCreate(SQLiteDatabase db) {
         Log.d(DatabaseHelper.class.getName(), "Creating Database");
@@ -57,6 +74,14 @@ public class DatabaseHelper extends SQLiteOpenHelper{
         );
     }
 
+    /**
+     * Upgrades Database
+     * just trashes the database if there is a new version lol
+     *
+     * @param db old Database you're upgrading
+     * @param oldVersion number
+     * @param newVersion number
+     */
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         Log.d(DatabaseHelper.class.getName(), "Upgrading DB");

@@ -5,7 +5,7 @@ package com.haapyindustries.haapymovies.enums;
  * Contains the possible statuses of a User
  *
  * @author pjztam
- * @version M8
+ * @version M9
  */
 public enum UserStatus {
     ACTIVE(UserStatus.active),
@@ -37,6 +37,11 @@ public enum UserStatus {
         return this.status;
     }
 
+    /**
+     * Deserialize enum
+     * @param s serialized enum
+     * @return deserialized enum
+     */
     public static UserStatus stringToUserStatus(String s) {
         if(s.equals(UserStatus.active)) {
             return UserStatus.ACTIVE;

@@ -5,7 +5,7 @@ package com.haapyindustries.haapymovies.enums;
  * Contains the possible Types of a User
  *
  * @author pjztam
- * @version M8
+ * @version M9
  */
 public enum UserType {
     USER(UserType.user),
@@ -35,6 +35,11 @@ public enum UserType {
         return this.type;
     }
 
+    /**
+     * Deserialize enum
+     * @param s Serialized enum
+     * @return deserialized enum
+     */
     public static UserType stringToUserType(String s) {
         if(s.equals(UserType.user)) {
             return UserType.USER;

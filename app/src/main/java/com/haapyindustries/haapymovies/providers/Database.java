@@ -14,12 +14,21 @@ import com.haapyindustries.haapymovies.models.User;
 import java.sql.SQLException;
 
 /**
- * Created by pjztam on 3/26/2016.
+ * Database Service Provider
+ * interfaces with SQLite database
+ *
+ * @author pjztam, Yuanhan Pan
+ * @version M9
  */
 public class Database {
     private SQLiteDatabase db;
     private DatabaseHelper helper;
 
+    /**
+     * Create a new Database
+     *
+     * @param context Current context
+     */
     public Database(Context context) {
         helper = new DatabaseHelper(context);
         try {
@@ -30,14 +39,30 @@ public class Database {
         }
     }
 
+    /**
+     * Opens connection to the SQLite database
+     *
+     * @throws SQLException
+     */
     public void open() throws SQLException {
         db = helper.getWritableDatabase();
     }
 
+    /**
+     * Closes connection to the SQLLite database
+     */
     public void close() {
         helper.close();
     }
 
+    /**
+     * Gets User from Username
+     * queries db for username
+     * returns associated User
+     *
+     * @param username of User you are searching for
+     * @return User representation of the User
+     */
     public User getUserFromUsername(String username) {
         Cursor c = db.query(
                 helper.USER_TABLE_NAME,
@@ -65,6 +90,14 @@ public class Database {
         db.update(helper.USER_TABLE_NAME, values, helper.USER_COLUMN_UID + "=?", new String[]{user.getUid() + ""});
     }
 
+    /**
+     * Gets a User from a Cursor
+     * takes row in db selected by Cursor
+     * turns row into a User object
+     *
+     * @param c Cursor pointing the row holding the User
+     * @return User that is at the Cursor
+     */
     private User getUserFromCursor(Cursor c) {
         String username = c.getString(c.getColumnIndex(helper.USER_COLUMN_USERNAME));
         String password = c.getString(c.getColumnIndex(helper.USER_COLUMN_PASSWORD));
@@ -81,6 +114,11 @@ public class Database {
         return user;
     }
 
+    /**
+     * Adds a User to the Database
+     *
+     * @param user to add
+     */
     public void addUser(User user) {
         ContentValues values = new ContentValues();
         values.put(helper.USER_COLUMN_USERNAME,     user.getUsername());

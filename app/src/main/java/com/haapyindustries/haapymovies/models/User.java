@@ -8,7 +8,7 @@ import com.haapyindustries.haapymovies.enums.UserType;
  * Stores Data pertaining to Users, and holds associated methods
  *
  * @author Yuanhan Pan, pjztam
- * @version M8
+ * @version M9
  */
 public class User {
     private long uid;
@@ -151,10 +151,18 @@ public class User {
         this.loginTries = tries;
     }
 
+    /**
+     * Gets the User's UID
+     * @return User's UID
+     */
     public long getUid() {
         return this.uid;
     }
 
+    /**
+     * Sets the User's UID
+     * @param uid User's UID
+     */
     public void setUid(Long uid) {
         this.uid = uid;
     }
