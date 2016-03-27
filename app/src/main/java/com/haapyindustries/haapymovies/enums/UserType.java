@@ -8,10 +8,13 @@ package com.haapyindustries.haapymovies.enums;
  * @version M8
  */
 public enum UserType {
-    USER("User"),
-    ADMIN("Admin");
+    USER(UserType.user),
+    ADMIN(UserType.admin);
 
     private String type;
+
+    private static final String user = "User";
+    private static final String admin = "Admin";
 
     /**
      * Enum Constructor
@@ -30,5 +33,14 @@ public enum UserType {
     @Override
     public String toString() {
         return this.type;
+    }
+
+    public static UserType stringToUserType(String s) {
+        if(s.equals(UserType.user)) {
+            return UserType.USER;
+        } else if (s.equals(UserType.admin)) {
+            return UserType.ADMIN;
+        }
+        return UserType.USER;
     }
 }

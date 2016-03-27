@@ -8,11 +8,15 @@ package com.haapyindustries.haapymovies.enums;
  * @version M8
  */
 public enum UserStatus {
-    ACTIVE("Active"),
-    LOCKED("Locked"),
-    BANNED("Banned");
+    ACTIVE(UserStatus.active),
+    LOCKED(UserStatus.locked),
+    BANNED(UserStatus.banned);
 
     private String status;
+
+    private static final String active = "Active";
+    private static final String locked = "Locked";
+    private static final String banned = "Banned";
 
     /**
      * Enum Constructor
@@ -31,5 +35,16 @@ public enum UserStatus {
     @Override
     public String toString() {
         return this.status;
+    }
+
+    public static UserStatus stringToUserStatus(String s) {
+        if(s.equals(UserStatus.active)) {
+            return UserStatus.ACTIVE;
+        } else if (s.equals(UserStatus.locked)) {
+            return UserStatus.LOCKED;
+        } else if (s.equals(UserStatus.banned)) {
+            return UserStatus.BANNED;
+        }
+        return UserStatus.ACTIVE;
     }
 }

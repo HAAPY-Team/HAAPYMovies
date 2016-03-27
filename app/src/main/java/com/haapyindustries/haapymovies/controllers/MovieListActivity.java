@@ -105,40 +105,40 @@ public class MovieListActivity extends AppCompatActivity {
         }
 
         JsonObjectRequest joR = new JsonObjectRequest(Request.Method.GET, url, (String) null, new Response.Listener<JSONObject>() {
-                @Override
-                public void onResponse(JSONObject resp) {
-                    JSONArray movieArray = resp.optJSONArray("movies");
-                    movies = new ArrayList<Movie>();
-                    for(int i = 0; i < movieArray.length(); i++){
-                        try{
-                            JSONObject movieObj = movieArray.getJSONObject(i);
-                            Movie m = new Movie();
-                            assert movieObj != null;
-                            m.setTitle(movieObj.optString("title"));
-                            movies.add(m);
+            @Override
+            public void onResponse(JSONObject resp) {
+                JSONArray movieArray = resp.optJSONArray("movies");
+                movies = new ArrayList<Movie>();
+                for(int i = 0; i < movieArray.length(); i++){
+                    try{
+                        JSONObject movieObj = movieArray.getJSONObject(i);
+                        Movie m = new Movie();
+                        assert movieObj != null;
+                        m.setTitle(movieObj.optString("title"));
+                        movies.add(m);
 
-                        } catch (JSONException e) {
-                            e.printStackTrace();
-                        }
+                    } catch (JSONException e) {
+                        e.printStackTrace();
                     }
-                    ArrayAdapter adapter = new ArrayAdapter(MovieListActivity.this, R.layout.activity_listview, movies);
-                    ListView listView = (ListView) findViewById(R.id.mobile_list);
-                    listView.setAdapter(adapter);
-                    listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-                        @Override
-                        public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                            String item = ((TextView) view).getText().toString();
-                            goToRater(item);
-                        }
-                    });
+                }
+                ArrayAdapter adapter = new ArrayAdapter(MovieListActivity.this, R.layout.activity_listview, movies);
+                ListView listView = (ListView) findViewById(R.id.mobile_list);
+                listView.setAdapter(adapter);
+                listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                    @Override
+                    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                        String item = ((TextView) view).getText().toString();
+                        goToRater(item);
+                    }
+                });
 
-                }
-            }, new Response.ErrorListener() {
-                @Override
-                public void onErrorResponse(VolleyError error) {
-                    response = "Request failed bro";
-                }
-            });
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                response = "Request failed bro";
+            }
+        });
         queue.add(joR);
 
     }

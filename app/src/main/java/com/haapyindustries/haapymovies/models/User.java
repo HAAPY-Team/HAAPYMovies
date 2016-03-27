@@ -11,6 +11,7 @@ import com.haapyindustries.haapymovies.enums.UserType;
  * @version M8
  */
 public class User {
+    private long uid;
     private String username;
     private String password;
     private String major;
@@ -26,6 +27,7 @@ public class User {
      * @param major
      */
     public User(String username, String password, String major) {
+        this.uid = -1;
         this.username = username;
         this.password = password;
         this.major = major;
@@ -42,6 +44,7 @@ public class User {
      * @param userType
      */
     public User(String username, String password, String major, UserType userType) {
+        this.uid = -1;
         this.username = username;
         this.password = password;
         this.major = major;
@@ -146,6 +149,14 @@ public class User {
      */
     public void setLoginTries(int tries) {
         this.loginTries = tries;
+    }
+
+    public long getUid() {
+        return this.uid;
+    }
+
+    public void setUid(Long uid) {
+        this.uid = uid;
     }
 }
 

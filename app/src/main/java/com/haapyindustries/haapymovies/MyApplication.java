@@ -1,8 +1,11 @@
 package com.haapyindustries.haapymovies;
 
 import android.app.Application;
+import android.util.Log;
 
+import com.haapyindustries.haapymovies.models.User;
 import com.haapyindustries.haapymovies.models.UserManager;
+import com.haapyindustries.haapymovies.providers.Database;
 
 /**
  * Main Application
@@ -25,5 +28,14 @@ public class MyApplication extends Application{
         UserManager.addUser("y", "y", "cs");
         UserManager.addUser("p", "p", "cs");
         UserManager.addUser("aaron", "weed", "cs");
+        Database db = new Database(getApplicationContext());
+        try {
+            db.open();
+        } catch (Exception e) {
+            Log.w("MyApplication", e.getMessage());
+        }
+        db.addUser(new User("pjztam5", "stuff", "cs"));
+        User u = db.getUserFromUsername("pjztam5");
+        Log.d("MyApplication", u.getMajor());
     }
 }
