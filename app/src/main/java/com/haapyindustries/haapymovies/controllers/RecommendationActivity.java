@@ -1,8 +1,6 @@
 package com.haapyindustries.haapymovies.controllers;
 
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
@@ -13,11 +11,8 @@ import android.widget.TextView;
 
 import com.haapyindustries.haapymovies.R;
 import com.haapyindustries.haapymovies.models.RatingData;
-import com.haapyindustries.haapymovies.models.Ratings;
 import com.haapyindustries.haapymovies.models.UserManager;
 import com.haapyindustries.haapymovies.providers.Database;
-
-import java.util.ArrayList;
 
 /**
  * Recommendation Activity

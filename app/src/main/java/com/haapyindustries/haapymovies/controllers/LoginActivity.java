@@ -1,6 +1,5 @@
 package com.haapyindustries.haapymovies.controllers;
 
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -13,7 +12,6 @@ import android.widget.Toast;
 import com.haapyindustries.haapymovies.R;
 import com.haapyindustries.haapymovies.enums.UserStatus;
 import com.haapyindustries.haapymovies.enums.UserType;
-import com.haapyindustries.haapymovies.models.Ratings;
 import com.haapyindustries.haapymovies.models.User;
 import com.haapyindustries.haapymovies.models.UserManager;
 
@@ -58,7 +56,6 @@ public class LoginActivity extends AppCompatActivity {
      * @param w View that was clicked
      */
     public void onLoginButtonClick(View w) {
-        Ratings.clearUserRatings();
         EditText userBox = (EditText) findViewById(R.id.user_box);
         EditText passBox = (EditText) findViewById(R.id.pass_box);
         String username = userBox.getText().toString();

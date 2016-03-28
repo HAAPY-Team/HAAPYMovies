@@ -1,13 +1,11 @@
 package com.haapyindustries.haapymovies.controllers;
 
 import android.content.Intent;
-import android.media.Rating;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.ArrayAdapter;
-import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -16,8 +14,6 @@ import android.widget.Button;
 
 import com.haapyindustries.haapymovies.R;
 import com.haapyindustries.haapymovies.models.RatingData;
-import com.haapyindustries.haapymovies.models.Ratings;
-import com.haapyindustries.haapymovies.models.User;
 import com.haapyindustries.haapymovies.models.UserManager;
 import com.haapyindustries.haapymovies.providers.Database;
 

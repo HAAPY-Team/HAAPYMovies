@@ -130,6 +130,10 @@ public class Database {
         user.setUid(db.insert(helper.USER_TABLE_NAME, null, values));
     }
 
+    /**
+     * Adds a rating to the Database
+     * @param rating to add
+     */
     public void addRating(RatingData rating) {
         ContentValues values = new ContentValues();
         values.put(helper.RATINGS_COLUMN_MAJOR,     rating.getMajor());
@@ -139,6 +143,10 @@ public class Database {
         rating.setRid(db.insert(helper.RATINGS_TABLE_NAME, null, values));
     }
 
+    /**
+     * Updates a rating in the database to its new values
+     * @param rating to update
+     */
     public void updatRating(RatingData rating) {
         ContentValues values = new ContentValues();
         values.put(helper.RATINGS_COLUMN_MAJOR,     rating.getMajor());
@@ -148,6 +156,11 @@ public class Database {
         db.update(helper.RATINGS_TABLE_NAME, values, helper.RATINGS_COLUMN_RID + "=?", new String[]{rating.getRid() + ""});
     }
 
+    /**
+     * Helper method to convert a cursor line to a RatingData instance
+     * @param c the cursor
+     * @return RatingData generated from the cursor
+     */
     private RatingData getRatingFromCursor(Cursor c) {
         String username = c.getString(c.getColumnIndex(helper.RATINGS_COLUMN_USERNAME));
         String movieName = c.getString(c.getColumnIndex(helper.RATINGS_COLUMN_MOVIENAME));
@@ -163,6 +176,12 @@ public class Database {
         return rating;
     }
 
+    /**
+     * Gets the rating for a movie by the current logged in user
+     * @param username the username of the current user
+     * @param movie the movie to get the user's rating for
+     * @return an instance of RatingData for the current user for the specified movie
+     */
     public RatingData getUserRatingForMovie(String username, String movie) {
         Cursor c = db.rawQuery(
                 "SELECT * FROM " + helper.RATINGS_TABLE_NAME
@@ -179,6 +198,14 @@ public class Database {
         return null;
     }
 
+    /**
+     * Gets the overall rating for a movie for a major by calculating the average of all user submitted
+     * ratings in that major
+     * @param major the specified major
+     * @param movie the specified movie to look up
+     * @return the average rating of the specified movie from the average of all user ratings in that
+     * major
+     */
     public int getMajorRatingForMovie(String major, String movie) {
         Cursor c = db.rawQuery(
                 "SELECT * FROM " + helper.RATINGS_TABLE_NAME
@@ -199,6 +226,12 @@ public class Database {
         return 0;
     }
 
+    /**
+     * Gets the movie with the highest overall rating for the specified major
+     * @param major the major to look up
+     * @return an instance of RatingData that contains the name of the movie with the highest
+     * rating and its rating
+     */
     public RatingData getRecommendationForMajor(String major) {
         Cursor c = db.rawQuery(
                 "SELECT DISTINCT " + helper.RATINGS_COLUMN_MOVIENAME
