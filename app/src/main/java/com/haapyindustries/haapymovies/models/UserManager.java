@@ -4,6 +4,7 @@ import android.util.Log;
 
 import com.haapyindustries.haapymovies.enums.UserStatus;
 import com.haapyindustries.haapymovies.enums.UserType;
+import com.haapyindustries.haapymovies.providers.Database;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -34,10 +35,12 @@ public class UserManager {
      * @param password
      * @param major
      */
-    public static void addUser(String username, String password, String major) {
+    public static void addUser(String username, String password, String major, Database db) {
         User user = new User(username, password, major);
-        majors.add(major);
-        users.put(username, user);
+       if (!doesUserExist(username, db)) {
+           db.addUser(user);
+       }
+
     }
 
     /**
@@ -46,10 +49,11 @@ public class UserManager {
      * @param password
      * @param major
      */
-    public static void addAdmin(String username, String password, String major) {
+    public static void addAdmin(String username, String password, String major, Database db) {
         User user = new User(username, password, major, UserType.ADMIN);
-        majors.add(major);
-        users.put(username, user);
+        if (!doesUserExist(username, db)) {
+            db.addUser(user);
+        }
     }
 
     /**
@@ -61,8 +65,8 @@ public class UserManager {
      * @param password
      * @return Null if User doesn't exist, User otherwise
      */
-    public static User handleLoginRequest(String username, String password) {
-        User curr = users.get(username);
+    public static User handleLoginRequest(String username, String password, Database db) {
+        User curr = db.getUserFromUsername(username) ;
         if (curr == null) {
             Log.d("Login Failed", "wrong username");
             return null;
@@ -96,8 +100,10 @@ public class UserManager {
      * @param username
      * @return True if user is already in DB, false otherwise
      */
-    public static boolean doesUserExist(String username) {
-        return !(users.get(username) == null);
+    public static boolean doesUserExist(String username, Database db) {
+
+
+        return !(db.getUserFromUsername(username) == null);
     }
 
     /**

@@ -99,6 +99,9 @@ public class Database {
      * @return User that is at the Cursor
      */
     private User getUserFromCursor(Cursor c) {
+        if (c.getCount() == 0) {
+            return null;
+        }
         String username = c.getString(c.getColumnIndex(helper.USER_COLUMN_USERNAME));
         String password = c.getString(c.getColumnIndex(helper.USER_COLUMN_PASSWORD));
         String major =  c.getString(c.getColumnIndex(helper.USER_COLUMN_MAJOR));

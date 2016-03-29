@@ -11,6 +11,7 @@ import android.widget.Toast;
 
 import com.haapyindustries.haapymovies.R;
 import com.haapyindustries.haapymovies.models.UserManager;
+import com.haapyindustries.haapymovies.providers.Database;
 
 /**
  * Registration Page Activity
@@ -56,14 +57,14 @@ public class RegistrationPageActivity extends AppCompatActivity {
         String username = ((EditText) findViewById(R.id.registerPageUsername)).getText().toString();
         String password = ((EditText) findViewById(R.id.registerPagePassword)).getText().toString();
         String major = ((EditText) findViewById(R.id.registerPageMajor)).getText().toString();
-
-        if (UserManager.doesUserExist(username)) {
+        Database db = new Database(getBaseContext());
+        if (UserManager.doesUserExist(username, db)) {
             Context context = getApplicationContext();
             int duration = Toast.LENGTH_SHORT;
             Toast t = Toast.makeText(context, "User already exists", duration);
             t.show();
         } else {
-            UserManager.addUser(username, password, major);
+            UserManager.addUser(username, password, major, db);
             Intent intent = new Intent(this, WelcomeActivity.class);
             finish();
             startActivity(intent);

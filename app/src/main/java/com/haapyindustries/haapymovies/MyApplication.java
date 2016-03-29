@@ -23,17 +23,18 @@ public class MyApplication extends Application{
     @Override
     public void onCreate() {
         super.onCreate();
-        UserManager.addAdmin("a", "a", "cs");
-        UserManager.addUser("j", "j", "cs");
-        UserManager.addUser("y", "y", "cs");
-        UserManager.addUser("p", "p", "cs");
-        UserManager.addUser("aaron", "weed", "cs");
+
         Database db = new Database(getApplicationContext());
         try {
             db.open();
         } catch (Exception e) {
             Log.w("MyApplication", e.getMessage());
         }
+        UserManager.addAdmin("a", "a", "cs", db);
+        UserManager.addUser("j", "j", "cs", db);
+        UserManager.addUser("y", "y", "cs", db);
+        UserManager.addUser("p", "p", "cs", db);
+        UserManager.addUser("aaron", "weed", "cs", db);
         db.addUser(new User("pjztam5", "stuff", "cs"));
         User u = db.getUserFromUsername("pjztam5");
         Log.d("MyApplication", u.getMajor());

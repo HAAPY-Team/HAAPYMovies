@@ -14,6 +14,7 @@ import com.haapyindustries.haapymovies.enums.UserStatus;
 import com.haapyindustries.haapymovies.enums.UserType;
 import com.haapyindustries.haapymovies.models.User;
 import com.haapyindustries.haapymovies.models.UserManager;
+import com.haapyindustries.haapymovies.providers.Database;
 
 /**
  * Login Page Activity
@@ -60,8 +61,9 @@ public class LoginActivity extends AppCompatActivity {
         EditText passBox = (EditText) findViewById(R.id.pass_box);
         String username = userBox.getText().toString();
         String password = passBox.getText().toString();
-
-        User user = UserManager.handleLoginRequest(username, password);
+        Database db = new Database(getBaseContext());
+        User user = UserManager.handleLoginRequest(username, password, db);
+        db.close();
 
         if (user == null) {
             (Toast.makeText(getApplicationContext(), "User Account doesn't exist", Toast.LENGTH_SHORT)).show();
