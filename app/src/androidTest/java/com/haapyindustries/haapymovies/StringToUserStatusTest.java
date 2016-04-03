@@ -9,6 +9,7 @@ import junit.framework.TestCase;
 
 /**
  * Created by Yuanhan on 4/3/2016.
+ * Test class for testing stringToUserStatus method
  */
 public class StringToUserStatusTest extends TestCase{
     protected String active = "Active";
