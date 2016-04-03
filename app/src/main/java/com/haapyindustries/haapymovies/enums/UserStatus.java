@@ -43,12 +43,14 @@ public enum UserStatus {
      * @return deserialized enum
      */
     public static UserStatus stringToUserStatus(String s) {
-        if(s.equals(UserStatus.active)) {
-            return UserStatus.ACTIVE;
-        } else if (s.equals(UserStatus.locked)) {
-            return UserStatus.LOCKED;
-        } else if (s.equals(UserStatus.banned)) {
-            return UserStatus.BANNED;
+        if (s != null) {
+            if (s.equals(UserStatus.active)) {
+                return UserStatus.ACTIVE;
+            } else if (s.equals(UserStatus.locked)) {
+                return UserStatus.LOCKED;
+            } else if (s.equals(UserStatus.banned)) {
+                return UserStatus.BANNED;
+            }
         }
         return UserStatus.ACTIVE;
     }
