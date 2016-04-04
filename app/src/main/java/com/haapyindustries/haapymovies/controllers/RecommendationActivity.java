@@ -42,7 +42,10 @@ public class RecommendationActivity extends AppCompatActivity {
         setContentView(R.layout.activity_recommendation);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         majorSpinner = (Spinner) findViewById(R.id.majorSpinner);
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, UserManager.getMajors());
+        Database db = new Database(getBaseContext());
+        String[] majors = db.getMajors();
+        db.close();
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, majors);
         majorSpinner.setAdapter(adapter);
         setSupportActionBar(toolbar);
 

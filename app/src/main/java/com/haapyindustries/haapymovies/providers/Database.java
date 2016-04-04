@@ -133,6 +133,23 @@ public class Database {
         user.setUid(db.insert(helper.USER_TABLE_NAME, null, values));
     }
 
+    public String[] getMajors() {
+        Cursor c = db.query(true, helper.USER_TABLE_NAME,
+                new String[] {helper.USER_COLUMN_MAJOR},
+                null, null, null, null, null, null);
+        if ((c != null) && (c.getCount() > 0)) {
+            String[] majors = new String[c.getCount()];
+            c.moveToFirst();
+            for (int i = 0; i < c.getCount(); i++) {
+                majors[i] = c.getString(c.getColumnIndex(helper.USER_COLUMN_MAJOR));
+                c.move(1);
+            }
+            return majors;
+        } else {
+            return new String[]{};
+        }
+    }
+
     /**
      * Adds a rating to the Database
      * @param rating to add
