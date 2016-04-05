@@ -85,15 +85,19 @@ public class AdminUserProfileViewActivity extends AppCompatActivity {
     public void onBanButtonClick(View w) {
         if(user.getUserStatus() != UserStatus.BANNED) {
             user.setStatus(UserStatus.BANNED);
-            ban.setText("Unban");
-            status.setText("Banned");
+            final String unban = "Unban";
+            final String banned = "Banned";
+            ban.setText(unban);
+            status.setText(banned);
             if(user.getUserStatus() == UserStatus.LOCKED) {
                 unlock.setEnabled(false);
             }
         } else {
             user.setStatus(UserStatus.ACTIVE);
-            ban.setText("Ban");
-            status.setText("Active");
+            final String banText = "Ban";
+            final String active = "Active";
+            ban.setText(banText);
+            status.setText(active);
         }
     }
 
@@ -105,7 +109,8 @@ public class AdminUserProfileViewActivity extends AppCompatActivity {
      */
     public void onUnlockButtonClick(View w) {
         user.setStatus(UserStatus.ACTIVE);
-        status.setText("Active");
+        final String active = "Active";
+        status.setText(active);
         unlock.setEnabled(false);
     }
 

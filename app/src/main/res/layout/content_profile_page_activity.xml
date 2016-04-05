@@ -15,11 +15,12 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Logout"
+        android:text="@string/title_activity_logout"
         android:id="@+id/logout_button"
         android:onClick="onLogoutButtonClick"
         android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true" />
+        android:layout_alignParentEnd="true"
+        tools:ignore="RelativeOverlap" />
 
     <Button
         android:layout_width="wrap_content"
@@ -40,12 +41,14 @@
         android:layout_alignParentStart="true" />
 
     <EditText
+        android:inputType="text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/profilePageMajor"
         android:layout_below="@+id/textView5"
         android:layout_alignParentStart="true"
-        android:layout_alignEnd="@+id/profilePagePassword" />
+        android:layout_alignEnd="@+id/profilePagePassword"
+        tools:ignore="LabelFor" />
 
     <EditText
         android:layout_width="wrap_content"
@@ -54,7 +57,8 @@
         android:ems="10"
         android:id="@+id/profilePagePassword"
         android:layout_below="@+id/textView6"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        tools:ignore="LabelFor" />
 
     <TextView
         android:layout_width="wrap_content"

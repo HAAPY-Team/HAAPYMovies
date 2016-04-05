@@ -103,7 +103,8 @@ public class RecommendationActivity extends AppCompatActivity {
         db.close();
         recommendText.setVisibility(View.VISIBLE);
         if (topMovie == null) {
-            recommendText.setText("No Recommendations Found for any Movies by " + major + " Majors");
+            final String viewText = "No Recommendations Found for any Movies by " + major + " Majors";
+            recommendText.setText(viewText);
         } else {
             recommendText.setText(topMovie.getMovie());
             final int rating = topMovie.getRating();

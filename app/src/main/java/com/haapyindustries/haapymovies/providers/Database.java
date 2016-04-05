@@ -157,6 +157,7 @@ public class Database {
                 majors[i] = c.getString(c.getColumnIndex(helper.USER_COLUMN_MAJOR));
                 c.move(1);
             }
+            c.close();
             return majors;
         } else {
             return new String[]{};
@@ -296,6 +297,7 @@ public class Database {
         final RatingData rating = new RatingData();
         rating.setMovie(topMovie);
         rating.setRating(maxRating);
+        c.close();
         return rating;
     }
 

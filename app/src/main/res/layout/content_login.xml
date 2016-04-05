@@ -16,7 +16,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="Username"
+        android:text="@string/register_page_username"
         android:id="@+id/user_text"
         android:layout_alignParentTop="true"
         android:layout_alignParentStart="true" />
@@ -25,19 +25,21 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="Password"
+        android:text="@string/register_page_password"
         android:id="@+id/pass_text"
         android:layout_marginTop="37dp"
         android:layout_below="@+id/user_box"
         android:layout_alignParentStart="true" />
 
     <EditText
+        android:inputType="text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/user_box"
         android:layout_below="@+id/user_text"
         android:layout_alignParentStart="true"
-        android:layout_alignEnd="@+id/pass_box" />
+        android:layout_alignEnd="@+id/pass_box"
+        tools:ignore="LabelFor" />
 
     <EditText
         android:layout_width="wrap_content"
@@ -46,12 +48,13 @@
         android:ems="10"
         android:id="@+id/pass_box"
         android:layout_below="@+id/pass_text"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        tools:ignore="LabelFor" />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Cancel"
+        android:text="@string/register_page_cancel_button"
         android:id="@+id/cancel_button"
         android:layout_marginTop="37dp"
         android:layout_below="@+id/login_button"
@@ -61,7 +64,7 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Login"
+        android:text="@string/login_button"
         android:id="@+id/login_button"
         android:layout_centerVertical="true"
         android:layout_alignStart="@+id/cancel_button"

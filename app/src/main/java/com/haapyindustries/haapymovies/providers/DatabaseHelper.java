@@ -90,6 +90,11 @@ public class DatabaseHelper extends SQLiteOpenHelper{
         this(context, DATABASE_NAME);
     }
 
+    /**
+     * Creates a new database helper based on context and database name
+     * @param context the context
+     * @param databaseName name of the database
+     */
     public DatabaseHelper(Context context, String databaseName) {
         super(context, databaseName, null, DATABASE_VERSION);
     }

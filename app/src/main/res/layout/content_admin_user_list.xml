@@ -13,16 +13,13 @@
     tools:showIn="@layout/activity_admin_user_list"
     tools:context=".controllers.AdminUserListActivity">
 
-    <LinearLayout
-        android:orientation="vertical"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+
 
         <ListView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/admin_user_listview"
             android:headerDividersEnabled="true" />
-    </LinearLayout>
+
 
 </RelativeLayout>
