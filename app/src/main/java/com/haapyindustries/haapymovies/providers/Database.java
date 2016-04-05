@@ -21,8 +21,8 @@ import java.sql.SQLException;
  * @version M9
  */
 public class Database {
-    private SQLiteDatabase db;
-    private DatabaseHelper helper;
+    protected SQLiteDatabase db;
+    protected DatabaseHelper helper;
 
     /**
      * Create a new Database
@@ -31,6 +31,16 @@ public class Database {
      */
     public Database(Context context) {
         helper = new DatabaseHelper(context);
+        try {
+            open();
+        }
+        catch (Exception e) {
+
+        }
+    }
+
+    public Database(Context context, String databaseName) {
+        helper = new DatabaseHelper(context, databaseName);
         try {
             open();
         }

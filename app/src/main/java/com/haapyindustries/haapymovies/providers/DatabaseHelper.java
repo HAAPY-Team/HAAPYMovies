@@ -40,7 +40,11 @@ public class DatabaseHelper extends SQLiteOpenHelper{
      * @param context currrent Context
      */
     public DatabaseHelper(Context context) {
-        super(context, DATABASE_NAME, null, DATABASE_VERSION);
+        this(context, DATABASE_NAME);
+    }
+
+    public DatabaseHelper(Context context, String databaseName) {
+        super(context, databaseName, null, DATABASE_VERSION);
     }
 
     /**
