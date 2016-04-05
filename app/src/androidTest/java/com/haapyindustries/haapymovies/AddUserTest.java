@@ -48,23 +48,24 @@ public class AddUserTest {
         db = new TestDatabase(context);
 
     }
+
+    @Test
     public void testAddedUserIsInDatabase() throws Exception {
         UserManager.addUser("aaron", "pass", "cs", db);
         assertEquals("aaron", db.getUserFromUsername("aaron").getUsername());
-        assertEquals("aaron", db.getUserFromUsername("aaron").getPassword());
-        assertEquals("aaron", db.getUserFromUsername("aaron").getMajor());
+        assertEquals("pass", db.getUserFromUsername("aaron").getPassword());
+        assertEquals("cs", db.getUserFromUsername("aaron").getMajor());
 
 
     }
+
+    @Test
     public void testAddedAdminIsInDatabase() throws Exception {
         UserManager.addAdmin("patrick", "pass", "cs", db);
-        assertEquals("aaron", db.getUserFromUsername("patrick").getUsername());
-        assertEquals("aaron", db.getUserFromUsername("patrick").getPassword());
-        assertEquals("aaron", db.getUserFromUsername("patrick").getMajor());
-
-        assertEquals(UserType.ADMIN.toString(), db.getUserFromUsername("patrick").getUserType().toString())
-
-
+        assertEquals("patrick", db.getUserFromUsername("patrick").getUsername());
+        assertEquals("pass", db.getUserFromUsername("patrick").getPassword());
+        assertEquals("cs", db.getUserFromUsername("patrick").getMajor());
+        assertEquals(UserType.ADMIN.toString(), db.getUserFromUsername("patrick").getUserType().toString());
     }
 
 
