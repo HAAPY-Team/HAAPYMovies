@@ -113,32 +113,32 @@ public class RaterActivity extends AppCompatActivity implements View.OnClickList
             db.close();
             //Ratings.addRating(movieName, ratingNumber);
             //cases
-            if (userInput.equals("1")) { //case 1
+            if ("1".equals(userInput)) { //case 1
                 rat1.setVisibility(View.VISIBLE);
                 rat2.setVisibility(View.INVISIBLE);
                 rat3.setVisibility(View.INVISIBLE);
                 rat4.setVisibility(View.INVISIBLE);
                 rat5.setVisibility(View.INVISIBLE);
 
-            } else if (userInput.equals("2")) { //case 2
+            } else if ("2".equals(userInput)) { //case 2
                 rat1.setVisibility(View.VISIBLE);
                 rat2.setVisibility(View.VISIBLE);
                 rat3.setVisibility(View.INVISIBLE);
                 rat4.setVisibility(View.INVISIBLE);
                 rat5.setVisibility(View.INVISIBLE);
-            } else if (userInput.equals("3")) { //case 3
+            } else if ("3".equals(userInput)) { //case 3
                 rat1.setVisibility(View.VISIBLE);
                 rat2.setVisibility(View.VISIBLE);
                 rat3.setVisibility(View.VISIBLE);
                 rat4.setVisibility(View.INVISIBLE);
                 rat5.setVisibility(View.INVISIBLE);
-            } else if (userInput.equals("4")) { //case 4
+            } else if ("4".equals(userInput)) { //case 4
                 rat1.setVisibility(View.VISIBLE);
                 rat2.setVisibility(View.VISIBLE);
                 rat3.setVisibility(View.VISIBLE);
                 rat4.setVisibility(View.VISIBLE);
                 rat5.setVisibility(View.INVISIBLE);
-            } else if (userInput.equals("5")) { //case 5
+            } else if ("5".equals(userInput)) { //case 5
                 rat1.setVisibility(View.VISIBLE);
                 rat2.setVisibility(View.VISIBLE);
                 rat3.setVisibility(View.VISIBLE);

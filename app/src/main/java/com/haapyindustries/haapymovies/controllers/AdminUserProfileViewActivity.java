@@ -1,8 +1,6 @@
 package com.haapyindustries.haapymovies.controllers;
 
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
@@ -13,8 +11,6 @@ import com.haapyindustries.haapymovies.R;
 import com.haapyindustries.haapymovies.enums.UserStatus;
 import com.haapyindustries.haapymovies.models.User;
 import com.haapyindustries.haapymovies.models.UserManager;
-
-import org.w3c.dom.Text;
 
 /**
  * Admin User Profile View Activity
@@ -85,15 +81,19 @@ public class AdminUserProfileViewActivity extends AppCompatActivity {
     public void onBanButtonClick(View w) {
         if(user.getUserStatus() != UserStatus.BANNED) {
             user.setStatus(UserStatus.BANNED);
-            ban.setText("Unban");
-            status.setText("Banned");
+            final String unban = "Unban";
+            final String banned = "Banned";
+            ban.setText(unban);
+            status.setText(banned);
             if(user.getUserStatus() == UserStatus.LOCKED) {
                 unlock.setEnabled(false);
             }
         } else {
             user.setStatus(UserStatus.ACTIVE);
-            ban.setText("Ban");
-            status.setText("Active");
+            final String banText = "Ban";
+            final String active = "Active";
+            ban.setText(banText);
+            status.setText(active);
         }
     }
 
@@ -105,7 +105,8 @@ public class AdminUserProfileViewActivity extends AppCompatActivity {
      */
     public void onUnlockButtonClick(View w) {
         user.setStatus(UserStatus.ACTIVE);
-        status.setText("Active");
+        final String active = "Active";
+        status.setText(active);
         unlock.setEnabled(false);
     }
 

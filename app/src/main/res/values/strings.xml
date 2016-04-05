@@ -3,6 +3,7 @@
     <string name="login_button">Login</string>
     <string name="register_button">Register</string>
     <string name="title_activity_login">Login</string>
+    <string name="title_activity_logout">Logout</string>
     <string name="title_activity_profile_page_activity">Profile Page</string>
     <string name="title_activity_registration_page">Registration Page</string>
     <string name="register_page_username">Username</string>
@@ -17,6 +18,21 @@
     <string name="title_activity_admin_user_list">Users</string>
     <string name="title_activity_admin_user_profile_view">User Moderate</string>
     <string name="admin_user_list_name">Name</string>
+    <string name="search_movies">Search Movies</string>
+    <string name="select_major">Select Major:</string>
+    <string name="type">type</string>
+    <string name="ban">Ban</string>
+    <string name="status">status</string>
+    <string name="new_in_theater">New in Theater</string>
+    <string name="get_recommendation">Get Recommendation</string>
+    <string name="unlock">Unlock</string>
+    <string name="new_on_dvd">New on DVD</string>
+    <string name="search">Search</string>
+    <string name="submit_rating">Submit Rating</string>
+    <string name="select_rating">Select Rating</string>
+    <string name="your_rating">Your Rating:</string>
+    <string name="overall_rating">Overall Rating:</string>
+    <string name="rating_image">Rater Element</string>
     <!--<string name="register_button">Register</string>-->
     <!--<string name="login_button">Login</string>-->
 </resources>

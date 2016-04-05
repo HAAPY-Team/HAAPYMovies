@@ -11,7 +11,6 @@ import android.widget.TextView;
 
 import com.haapyindustries.haapymovies.R;
 import com.haapyindustries.haapymovies.models.RatingData;
-import com.haapyindustries.haapymovies.models.UserManager;
 import com.haapyindustries.haapymovies.providers.Database;
 
 /**
@@ -103,7 +102,8 @@ public class RecommendationActivity extends AppCompatActivity {
         db.close();
         recommendText.setVisibility(View.VISIBLE);
         if (topMovie == null) {
-            recommendText.setText("No Recommendations Found for any Movies by " + major + " Majors");
+            final String viewText = "No Recommendations Found for any Movies by " + major + " Majors";
+            recommendText.setText(viewText);
         } else {
             recommendText.setText(topMovie.getMovie());
             final int rating = topMovie.getRating();

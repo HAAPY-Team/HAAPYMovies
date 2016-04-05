@@ -16,7 +16,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="Select Major:"
+        android:text="@string/select_major"
         android:id="@+id/textView8"
         android:layout_alignParentTop="true"
         android:layout_alignParentStart="true" />
@@ -32,7 +32,7 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Get Recommendation"
+        android:text="@string/get_recommendation"
         android:id="@+id/majorSelectBtn"
         android:layout_below="@+id/majorSpinner"
         android:layout_centerHorizontal="true"
@@ -50,6 +50,7 @@
         android:visibility="invisible" />
 
     <ImageView
+        android:contentDescription="@string/rating_image"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/rec1"
@@ -60,6 +61,7 @@
         android:layout_marginTop="90dp" />
 
     <ImageView
+        android:contentDescription="@string/rating_image"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/rec2"
@@ -70,6 +72,7 @@
         android:layout_toEndOf="@+id/rec1" />
 
     <ImageView
+        android:contentDescription="@string/rating_image"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/rec3"
@@ -80,6 +83,7 @@
         android:layout_toEndOf="@+id/rec2" />
 
     <ImageView
+        android:contentDescription="@string/rating_image"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/rec4"
@@ -90,6 +94,7 @@
         android:layout_toEndOf="@+id/rec3" />
 
     <ImageView
+        android:contentDescription="@string/rating_image"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/rec5"

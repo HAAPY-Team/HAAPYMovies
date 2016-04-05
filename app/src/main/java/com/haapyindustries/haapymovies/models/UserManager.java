@@ -7,7 +7,6 @@ import com.haapyindustries.haapymovies.enums.UserType;
 import com.haapyindustries.haapymovies.providers.Database;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -21,7 +20,12 @@ import java.util.Set;
  * @author Yuanhan Pan, pjztam
  * @version M8
  */
-public class UserManager {
+public final class UserManager {
+
+    UserManager() {
+
+    }
+
     /**
      * Map of all users in use
      */
@@ -77,15 +81,17 @@ public class UserManager {
      * @return Null if User doesn't exist, User otherwise
      */
     public static User handleLoginRequest(String username, String password, Database db) {
+        final int maxLoginTries = 3;
+        final String failure = "Login Failed";
         final User curr = db.getUserFromUsername(username) ;
         if (curr == null) {
-            Log.d("Login Failed", "wrong username");
+            Log.d(failure, "wrong username");
             return null;
         } else if (curr.getUserStatus() == UserStatus.LOCKED) {
-            Log.d("Login Failed", "account locked");
+            Log.d(failure, "account locked");
             return curr;
         } else if (curr.getUserStatus() == UserStatus.BANNED) {
-            Log.d("Login Failed", "account banned");
+            Log.d(failure, "account banned");
             return curr;
         } else if (curr.checkPass(password)) {
             Log.d("Login Success", "login success");
@@ -94,10 +100,10 @@ public class UserManager {
             return curr;
         } else if (curr.getUserType() != UserType.ADMIN){
             curr.setLoginTries(curr.getLoginTries() + 1);
-            Log.d("Login Failed", "Wrong Password");
-            if (curr.getLoginTries() >= 3) {
+            Log.d(failure, "Wrong Password");
+            if (curr.getLoginTries() >= maxLoginTries) {
                 curr.setStatus(UserStatus.LOCKED);
-                Log.d("Login Failed", "User is now locked");
+                Log.d(failure, "User is now locked");
             }
             return curr;
         } else {

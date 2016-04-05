@@ -90,6 +90,11 @@ public class DatabaseHelper extends SQLiteOpenHelper{
         this(context, DATABASE_NAME);
     }
 
+    /**
+     * Creates a new database helper based on context and database name
+     * @param context the context
+     * @param databaseName name of the database
+     */
     public DatabaseHelper(Context context, String databaseName) {
         super(context, databaseName, null, DATABASE_VERSION);
     }
@@ -107,10 +112,10 @@ public class DatabaseHelper extends SQLiteOpenHelper{
             "CREATE TABLE " + USER_TABLE_NAME + " (" +
             USER_COLUMN_UID         + " integer primary key autoincrement," +
             USER_COLUMN_USERNAME    + " text not null unique," +
-            USER_COLUMN_PASSWORD    + " text not null," +
-            USER_COLUMN_MAJOR       + " text not null," +
-            USER_COLUMN_USERTYPE    + " text not null," +
-            USER_COLUMN_USERSTATUS  + " text not null," +
+            USER_COLUMN_PASSWORD    + " pass not null," +
+            USER_COLUMN_MAJOR       + " major not null," +
+            USER_COLUMN_USERTYPE    + " user type not null," +
+            USER_COLUMN_USERSTATUS  + " user status not null," +
             USER_COLUMN_LOGINTRIES  + " int" +
             ");"
         );
@@ -118,8 +123,8 @@ public class DatabaseHelper extends SQLiteOpenHelper{
                 "CREATE TABLE " + RATINGS_TABLE_NAME + " (" +
                         RATINGS_COLUMN_RID + " integer primary key autoincrement," +
                         RATINGS_COLUMN_USERNAME + " text not null," +
-                        RATINGS_COLUMN_MOVIENAME + " text not null," +
-                        RATINGS_COLUMN_MAJOR + " text not null," +
+                        RATINGS_COLUMN_MOVIENAME + " movie name not null," +
+                        RATINGS_COLUMN_MAJOR + " major not null," +
                         RATINGS_COLUMN_RATING + " int" +
                         ");"
         );
