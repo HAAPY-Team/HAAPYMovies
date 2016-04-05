@@ -8,23 +8,44 @@ package com.haapyindustries.haapymovies.enums;
  * @version M9
  */
 public enum UserStatus {
-    ACTIVE(UserStatus.active),
-    LOCKED(UserStatus.locked),
-    BANNED(UserStatus.banned);
+    /**
+     * Active status
+     */
+    ACTIVE(UserStatus.ACTIVESTATUS),
+    /**
+     * Locked status
+     */
+    LOCKED(UserStatus.LOCKEDSTATUS),
+    /**
+     * Banned status
+     */
+    BANNED(UserStatus.BANNEDSTATUS);
 
+    /**
+     * Status of User
+     */
     private String status;
 
-    private static final String active = "Active";
-    private static final String locked = "Locked";
-    private static final String banned = "Banned";
+    /**
+     * Active Status Text
+     */
+    private static final String ACTIVESTATUS = "Active";
+    /**
+     * Locked Status Text
+     */
+    private static final String LOCKEDSTATUS = "Locked";
+    /**
+     * Banned Status Text
+     */
+    private static final String BANNEDSTATUS = "Banned";
 
     /**
      * Enum Constructor
      *
-     * @param status in human readable format
+     * @param statusParam in human readable format
      */
-    UserStatus(String status) {
-        this.status = status;
+    UserStatus(String statusParam) {
+        this.status = statusParam;
     }
 
     /**
@@ -44,11 +65,11 @@ public enum UserStatus {
      */
     public static UserStatus stringToUserStatus(String s) {
         if (s != null) {
-            if (s.equals(UserStatus.active)) {
+            if (s.equals(UserStatus.ACTIVESTATUS)) {
                 return UserStatus.ACTIVE;
-            } else if (s.equals(UserStatus.locked)) {
+            } else if (s.equals(UserStatus.LOCKEDSTATUS)) {
                 return UserStatus.LOCKED;
-            } else if (s.equals(UserStatus.banned)) {
+            } else if (s.equals(UserStatus.BANNEDSTATUS)) {
                 return UserStatus.BANNED;
             }
         }

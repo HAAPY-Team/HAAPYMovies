@@ -22,37 +22,47 @@ import java.util.Set;
  * @version M8
  */
 public class UserManager {
+    /**
+     * Map of all users in use
+     */
     private static Map<String, User> users = new HashMap<>();
+    /**
+     * Set of all majors in use
+     */
     private static Set<String> majors = new HashSet<>();
 
-
+    /**
+     * User in the manager
+     */
     private static User user;
 
     /**
      * Adds a User to the Database
      *
-     * @param username
-     * @param password
-     * @param major
+     * @param username username of the User
+     * @param password password of the User
+     * @param major major of the User
+     * @param db database context to query User
      */
-    public static void addUser(String username, String password, String major, Database db) {
-        User user = new User(username, password, major);
-       if (!doesUserExist(username, db)) {
-           db.addUser(user);
-       }
+    public static void addUser(String username, String password, String major, Database db){
+        final User dbUser = new User(username, password, major);
+        if (!doesUserExist(username, db)) {
+            db.addUser(dbUser);
+        }
 
     }
 
     /**
      * Adds an Admin to the Database
-     * @param username
-     * @param password
-     * @param major
+     * @param username of User
+     * @param password of User
+     * @param major of User
+     * @param db database context to query User
      */
     public static void addAdmin(String username, String password, String major, Database db) {
-        User user = new User(username, password, major, UserType.ADMIN);
+        final User dbUser = new User(username, password, major, UserType.ADMIN);
         if (!doesUserExist(username, db)) {
-            db.addUser(user);
+            db.addUser(dbUser);
         }
     }
 
@@ -61,12 +71,13 @@ public class UserManager {
      * logs a User in if their username and password are valid
      * returns an error if credentials are invalid or user can't login
      *
-     * @param username
-     * @param password
+     * @param username of User
+     * @param password of User
+     * @param db database context to query User
      * @return Null if User doesn't exist, User otherwise
      */
     public static User handleLoginRequest(String username, String password, Database db) {
-        User curr = db.getUserFromUsername(username) ;
+        final User curr = db.getUserFromUsername(username) ;
         if (curr == null) {
             Log.d("Login Failed", "wrong username");
             return null;
@@ -97,8 +108,9 @@ public class UserManager {
     /**
      * Checks if User already exists in database
      *
-     * @param username
+     * @param username of User
      * @return True if user is already in DB, false otherwise
+     * @param db database context to query User
      */
     public static boolean doesUserExist(String username, Database db) {
 

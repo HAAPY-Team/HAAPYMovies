@@ -8,21 +8,36 @@ package com.haapyindustries.haapymovies.enums;
  * @version M9
  */
 public enum UserType {
-    USER(UserType.user),
-    ADMIN(UserType.admin);
+    /**
+     * User user type
+     */
+    USER(UserType.USERTYPE),
+    /**
+     * Admin user type
+     */
+    ADMIN(UserType.ADMINTYPE);
 
+    /**
+     * User type
+     */
     private String type;
 
-    private static final String user = "User";
-    private static final String admin = "Admin";
+    /**
+     * User user type text
+     */
+    private static final String USERTYPE = "User";
+    /**
+     * Admin user type text
+     */
+    private static final String ADMINTYPE = "Admin";
 
     /**
      * Enum Constructor
      *
-     * @param type in human readable format
+     * @param typeParam in human readable format
      */
-    UserType(String type) {
-        this.type = type;
+    UserType(String typeParam) {
+        this.type = typeParam;
     }
 
     /**
@@ -41,9 +56,9 @@ public enum UserType {
      * @return deserialized enum
      */
     public static UserType stringToUserType(String s) {
-        if(s.equals(UserType.user)) {
+        if(s.equals(UserType.USERTYPE)) {
             return UserType.USER;
-        } else if (s.equals(UserType.admin)) {
+        } else if (s.equals(UserType.ADMINTYPE)) {
             return UserType.ADMIN;
         }
         return UserType.USER;

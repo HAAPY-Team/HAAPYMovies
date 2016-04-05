@@ -40,7 +40,7 @@ public class WelcomeActivity extends AppCompatActivity {
      * @param w View that was clicked
      */
     public void onLoginButtonClick(View w) {
-        Intent intent = new Intent(this, LoginActivity.class);
+        final Intent intent = new Intent(this, LoginActivity.class);
         startActivity(intent);
     }
 
@@ -51,7 +51,7 @@ public class WelcomeActivity extends AppCompatActivity {
      * @param w View that was clicked
      */
     public void onRegistrationButtonClick(View w) {
-        Intent intent = new Intent(this, RegistrationPageActivity.class);
+        final Intent intent = new Intent(this, RegistrationPageActivity.class);
         startActivity(intent);
     }
 }

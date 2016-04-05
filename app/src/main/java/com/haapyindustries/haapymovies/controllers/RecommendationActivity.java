@@ -22,14 +22,34 @@ import com.haapyindustries.haapymovies.providers.Database;
  * @version M8
  */
 public class RecommendationActivity extends AppCompatActivity {
-
-    ImageView rec1;
-    ImageView rec2;
-    ImageView rec3;
-    ImageView rec4;
-    ImageView rec5;
-    TextView recommendText;
-    Spinner majorSpinner;
+    /**
+     * ImageView for the rating element
+     */
+    private ImageView rec1;
+    /**
+     * ImageView for the rating element
+     */
+    private ImageView rec2;
+    /**
+     * ImageView for the rating element
+     */
+    private ImageView rec3;
+    /**
+     * ImageView for the rating element
+     */
+    private ImageView rec4;
+    /**
+     * ImageView for the rating element
+     */
+    private ImageView rec5;
+    /**
+     * TextView for the recommendation text
+     */
+    private TextView recommendText;
+    /**
+     * Spinner to hold all the majors
+     */
+    private Spinner majorSpinner;
 
     /**
      * Sets up Activity
@@ -40,12 +60,12 @@ public class RecommendationActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_recommendation);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        final Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         majorSpinner = (Spinner) findViewById(R.id.majorSpinner);
-        Database db = new Database(getBaseContext());
-        String[] majors = db.getMajors();
+        final Database db = new Database(getBaseContext());
+        final String[] majors = db.getMajors();
         db.close();
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, majors);
+        final ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, majors);
         majorSpinner.setAdapter(adapter);
         setSupportActionBar(toolbar);
 
@@ -77,16 +97,16 @@ public class RecommendationActivity extends AppCompatActivity {
         rec4.setVisibility(View.INVISIBLE);
         rec5.setVisibility(View.INVISIBLE);
         recommendText.setVisibility(View.INVISIBLE);
-        String major = majorSpinner.getSelectedItem().toString();
-        Database db = new Database(getBaseContext());
-        RatingData topMovie = db.getRecommendationForMajor(major);
+        final String major = majorSpinner.getSelectedItem().toString();
+        final Database db = new Database(getBaseContext());
+        final RatingData topMovie = db.getRecommendationForMajor(major);
         db.close();
         recommendText.setVisibility(View.VISIBLE);
         if (topMovie == null) {
             recommendText.setText("No Recommendations Found for any Movies by " + major + " Majors");
         } else {
             recommendText.setText(topMovie.getMovie());
-            int rating = topMovie.getRating();
+            final int rating = topMovie.getRating();
             switch (rating) {
                 case 1:
                     rec1.setVisibility(View.VISIBLE);

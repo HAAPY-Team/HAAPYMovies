@@ -8,25 +8,32 @@ package com.haapyindustries.haapymovies.models;
  * @version M8
  */
 public class Movie {
-    private String Title;
-    private String Date;
 
     /**
-     * Gets Title of Movie
+     * movieTitle of Movie
+     */
+    private String movieTitle;
+    /**
+     * movieDate of Movie
+     */
+    private String movieDate;
+
+    /**
+     * Gets movieTitle of Movie
      *
-     * @return Movie's Title
+     * @return Movie's movieTitle
      */
     public String getTitle() {
-        return Title;
+        return movieTitle;
     }
 
     /**
-     * Sets Title of Movie
+     * Sets movieTitle of Movie
      *
      * @param title The new title of the Movie
      */
     public void setTitle(String title) {
-        Title = title;
+        movieTitle = title;
     }
 
     /**
@@ -35,6 +42,6 @@ public class Movie {
      */
     @Override
     public String toString() {
-        return Title;
+        return movieTitle;
     }
 }

@@ -34,7 +34,7 @@ public class LoginActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        final Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
     }
@@ -57,12 +57,12 @@ public class LoginActivity extends AppCompatActivity {
      * @param w View that was clicked
      */
     public void onLoginButtonClick(View w) {
-        EditText userBox = (EditText) findViewById(R.id.user_box);
-        EditText passBox = (EditText) findViewById(R.id.pass_box);
-        String username = userBox.getText().toString();
-        String password = passBox.getText().toString();
-        Database db = new Database(getBaseContext());
-        User user = UserManager.handleLoginRequest(username, password, db);
+        final EditText userBox = (EditText) findViewById(R.id.user_box);
+        final EditText passBox = (EditText) findViewById(R.id.pass_box);
+        final String username = userBox.getText().toString();
+        final String password = passBox.getText().toString();
+        final Database db = new Database(getBaseContext());
+        final User user = UserManager.handleLoginRequest(username, password, db);
         db.close();
 
         if (user == null) {
@@ -78,11 +78,11 @@ public class LoginActivity extends AppCompatActivity {
             }
         } else if (user.getPassword().equals(password)) {
             if(UserManager.getLoggedInUser().getUserType() == UserType.ADMIN) {
-                Intent intent = new Intent(this, AdminUserListActivity.class);
+                final Intent intent = new Intent(this, AdminUserListActivity.class);
                 finish();
                 startActivity(intent);
             } else {
-                Intent intent = new Intent(this, HomeActivity.class);
+                final Intent intent = new Intent(this, HomeActivity.class);
                 finish();
                 startActivity(intent);
             }

@@ -21,7 +21,13 @@ import java.sql.SQLException;
  * @version M9
  */
 public class Database {
+    /**
+     * The SQLiteDatabase to query
+     */
     private SQLiteDatabase db;
+    /**
+     * The DatabaseHelper to manage the database connection
+     */
     private DatabaseHelper helper;
 
     /**
@@ -33,8 +39,7 @@ public class Database {
         helper = new DatabaseHelper(context);
         try {
             open();
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
 
         }
     }
@@ -42,7 +47,7 @@ public class Database {
     /**
      * Opens connection to the SQLite database
      *
-     * @throws SQLException
+     * @throws SQLException database SQLException for failure to update database
      */
     public void open() throws SQLException {
         db = helper.getWritableDatabase();
@@ -64,7 +69,7 @@ public class Database {
      * @return User representation of the User
      */
     public User getUserFromUsername(String username) {
-        Cursor c = db.query(
+        final Cursor c = db.query(
                 helper.USER_TABLE_NAME,
                 null,
                 helper.USER_COLUMN_USERNAME + "=?",
@@ -74,13 +79,17 @@ public class Database {
                 null
         );
         c.moveToFirst();
-        User user = getUserFromCursor(c);
+        final User user = getUserFromCursor(c);
         c.close();
         return user;
     }
 
+    /**
+     * Updates the user in the database
+     * @param user the user to update the database with
+     */
     public void updateUser(User user) {
-        ContentValues values = new ContentValues();
+        final ContentValues values = new ContentValues();
         values.put(helper.USER_COLUMN_USERNAME,     user.getUsername());
         values.put(helper.USER_COLUMN_PASSWORD,     user.getPassword());
         values.put(helper.USER_COLUMN_MAJOR,        user.getMajor());
@@ -102,17 +111,17 @@ public class Database {
         if (c.getCount() == 0) {
             return null;
         }
-        String username = c.getString(c.getColumnIndex(helper.USER_COLUMN_USERNAME));
-        String password = c.getString(c.getColumnIndex(helper.USER_COLUMN_PASSWORD));
-        String major =  c.getString(c.getColumnIndex(helper.USER_COLUMN_MAJOR));
-        UserType user_type =  UserType.stringToUserType(c.getString(c.getColumnIndex(helper.USER_COLUMN_USERTYPE)));
-        UserStatus user_status = UserStatus.stringToUserStatus(c.getString(c.getColumnIndex(helper.USER_COLUMN_USERSTATUS)));
-        int login_tries = c.getInt(c.getColumnIndex(helper.USER_COLUMN_LOGINTRIES));
-        long uid = c.getLong(c.getColumnIndex(helper.USER_COLUMN_UID));
+        final String username = c.getString(c.getColumnIndex(helper.USER_COLUMN_USERNAME));
+        final String password = c.getString(c.getColumnIndex(helper.USER_COLUMN_PASSWORD));
+        final String major =  c.getString(c.getColumnIndex(helper.USER_COLUMN_MAJOR));
+        final UserType userType =  UserType.stringToUserType(c.getString(c.getColumnIndex(helper.USER_COLUMN_USERTYPE)));
+        final UserStatus userStatus = UserStatus.stringToUserStatus(c.getString(c.getColumnIndex(helper.USER_COLUMN_USERSTATUS)));
+        final int loginTries = c.getInt(c.getColumnIndex(helper.USER_COLUMN_LOGINTRIES));
+        final long uid = c.getLong(c.getColumnIndex(helper.USER_COLUMN_UID));
 
-        User user = new User(username, password, major, user_type);
-        user.setStatus(user_status);
-        user.setLoginTries(login_tries);
+        final User user = new User(username, password, major, userType);
+        user.setStatus(userStatus);
+        user.setLoginTries(loginTries);
         user.setUid(uid);
         return user;
     }
@@ -123,7 +132,7 @@ public class Database {
      * @param user to add
      */
     public void addUser(User user) {
-        ContentValues values = new ContentValues();
+        final ContentValues values = new ContentValues();
         values.put(helper.USER_COLUMN_USERNAME,     user.getUsername());
         values.put(helper.USER_COLUMN_PASSWORD,     user.getPassword());
         values.put(helper.USER_COLUMN_MAJOR,        user.getMajor());
@@ -133,12 +142,16 @@ public class Database {
         user.setUid(db.insert(helper.USER_TABLE_NAME, null, values));
     }
 
+    /**
+     * Gets the list of unique majors from the database
+     * @return an array of the unique majors from the database
+     */
     public String[] getMajors() {
-        Cursor c = db.query(true, helper.USER_TABLE_NAME,
+        final Cursor c = db.query(true, helper.USER_TABLE_NAME,
                 new String[] {helper.USER_COLUMN_MAJOR},
                 null, null, null, null, null, null);
         if ((c != null) && (c.getCount() > 0)) {
-            String[] majors = new String[c.getCount()];
+            final String[] majors = new String[c.getCount()];
             c.moveToFirst();
             for (int i = 0; i < c.getCount(); i++) {
                 majors[i] = c.getString(c.getColumnIndex(helper.USER_COLUMN_MAJOR));
@@ -155,7 +168,7 @@ public class Database {
      * @param rating to add
      */
     public void addRating(RatingData rating) {
-        ContentValues values = new ContentValues();
+        final ContentValues values = new ContentValues();
         values.put(helper.RATINGS_COLUMN_MAJOR,     rating.getMajor());
         values.put(helper.RATINGS_COLUMN_MOVIENAME,    rating.getMovie());
         values.put(helper.RATINGS_COLUMN_RATING,        rating.getRating());
@@ -168,7 +181,7 @@ public class Database {
      * @param rating to update
      */
     public void updatRating(RatingData rating) {
-        ContentValues values = new ContentValues();
+        final ContentValues values = new ContentValues();
         values.put(helper.RATINGS_COLUMN_MAJOR,     rating.getMajor());
         values.put(helper.RATINGS_COLUMN_MOVIENAME,    rating.getMovie());
         values.put(helper.RATINGS_COLUMN_RATING,        rating.getRating());
@@ -182,12 +195,12 @@ public class Database {
      * @return RatingData generated from the cursor
      */
     private RatingData getRatingFromCursor(Cursor c) {
-        String username = c.getString(c.getColumnIndex(helper.RATINGS_COLUMN_USERNAME));
-        String movieName = c.getString(c.getColumnIndex(helper.RATINGS_COLUMN_MOVIENAME));
-        String major =  c.getString(c.getColumnIndex(helper.RATINGS_COLUMN_MAJOR));
-        int ratingNumber = c.getInt(c.getColumnIndex(helper.RATINGS_COLUMN_RATING));
-        int rid = c.getInt(c.getColumnIndex(helper.RATINGS_COLUMN_RID));
-        RatingData rating = new RatingData();
+        final String username = c.getString(c.getColumnIndex(helper.RATINGS_COLUMN_USERNAME));
+        final String movieName = c.getString(c.getColumnIndex(helper.RATINGS_COLUMN_MOVIENAME));
+        final String major =  c.getString(c.getColumnIndex(helper.RATINGS_COLUMN_MAJOR));
+        final int ratingNumber = c.getInt(c.getColumnIndex(helper.RATINGS_COLUMN_RATING));
+        final int rid = c.getInt(c.getColumnIndex(helper.RATINGS_COLUMN_RID));
+        final RatingData rating = new RatingData();
         rating.setMajor(major);
         rating.setMovie(movieName);
         rating.setUsername(username);
@@ -203,7 +216,7 @@ public class Database {
      * @return an instance of RatingData for the current user for the specified movie
      */
     public RatingData getUserRatingForMovie(String username, String movie) {
-        Cursor c = db.rawQuery(
+        final Cursor c = db.rawQuery(
                 "SELECT * FROM " + helper.RATINGS_TABLE_NAME
                         + " WHERE " + helper.RATINGS_COLUMN_USERNAME + " = ?"
                         + " AND " + helper.RATINGS_COLUMN_MOVIENAME + " = ?",
@@ -211,7 +224,7 @@ public class Database {
         );
         if ((c != null) && (c.getCount() > 0)) {
             c.moveToFirst();
-            RatingData rating = getRatingFromCursor(c);
+            final RatingData rating = getRatingFromCursor(c);
             c.close();
             return rating;
         }
@@ -227,7 +240,7 @@ public class Database {
      * major
      */
     public int getMajorRatingForMovie(String major, String movie) {
-        Cursor c = db.rawQuery(
+        final Cursor c = db.rawQuery(
                 "SELECT * FROM " + helper.RATINGS_TABLE_NAME
                         + " WHERE " + helper.RATINGS_COLUMN_MAJOR + " = ?"
                         + " AND " + helper.RATINGS_COLUMN_MOVIENAME + " = ?",
@@ -235,7 +248,7 @@ public class Database {
         );
         if ((c != null) && (c.getCount() > 0)) {
             int totalRating = 0;
-            int totalUsers = c.getCount();
+            final int totalUsers = c.getCount();
             c.moveToFirst();
             for (int i = 0; i < c.getCount(); i++) {
                 totalRating += getRatingFromCursor(c).getRating();
@@ -253,13 +266,13 @@ public class Database {
      * rating and its rating
      */
     public RatingData getRecommendationForMajor(String major) {
-        Cursor c = db.rawQuery(
+        final Cursor c = db.rawQuery(
                 "SELECT DISTINCT " + helper.RATINGS_COLUMN_MOVIENAME
                         + " FROM " + helper.RATINGS_TABLE_NAME
                         + " WHERE " + helper.RATINGS_COLUMN_MAJOR + " = ?",
                 new String[]{major}
         );
-        String[] movieNames = new String[c.getCount()];
+        final String[] movieNames = new String[c.getCount()];
 
         if (c == null || c.getCount() == 0) {
             return null;
@@ -274,13 +287,13 @@ public class Database {
         String topMovie = "";
 
         for (int i = 0; i < movieNames.length; i++) {
-            int currentRating = getMajorRatingForMovie(major, movieNames[i]);
+            final int currentRating = getMajorRatingForMovie(major, movieNames[i]);
             if (currentRating > maxRating) {
                 maxRating = currentRating;
                 topMovie = movieNames[i];
             }
         }
-        RatingData rating = new RatingData();
+        final RatingData rating = new RatingData();
         rating.setMovie(topMovie);
         rating.setRating(maxRating);
         return rating;

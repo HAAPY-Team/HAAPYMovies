@@ -26,10 +26,25 @@ import org.w3c.dom.Text;
  */
 public class AdminUserProfileViewActivity extends AppCompatActivity {
 
+    /**
+     * User for the page
+     */
     private User user;
+    /**
+     * Ban button on page
+     */
     private Button ban;
+    /**
+     * Unlock button on page
+     */
     private Button unlock;
+    /**
+     * Textview to display user type
+     */
     private TextView type;
+    /**
+     * TextView to display user status
+     */
     private TextView status;
 
     /**
@@ -43,12 +58,12 @@ public class AdminUserProfileViewActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_admin_user_profile_view);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        final Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
         this.user = UserManager.getUser(getIntent().getStringExtra("username"));
 
-        TextView username = (TextView) findViewById(R.id.adminuserprofileview_name);
+        final TextView username = (TextView) findViewById(R.id.adminuserprofileview_name);
         this.type = (TextView) findViewById(R.id.adminuserprofileview_type);
         this.status = (TextView) findViewById(R.id.adminuserprofileview_status);
         this.ban = (Button) findViewById(R.id.adminuserprofileview_ban);

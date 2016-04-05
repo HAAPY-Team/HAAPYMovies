@@ -24,6 +24,9 @@ import java.util.List;
  */
 public class AdminUserListActivity extends AppCompatActivity {
 
+    /**
+     * Adapter used to access Users
+     */
     private UserAdapter userAdapter;
 
     /**
@@ -36,12 +39,12 @@ public class AdminUserListActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_admin_user_list);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        final Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        List<User> users = UserManager.getUsers();
+        final List<User> users = UserManager.getUsers();
         this.userAdapter = new UserAdapter(AdminUserListActivity.this, R.layout.activity_admin_user_list_row, new ArrayList<User>(users));
-        ListView listView = (ListView) findViewById(R.id.admin_user_listview);
+        final ListView listView = (ListView) findViewById(R.id.admin_user_listview);
         listView.setAdapter(this.userAdapter);
 
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -61,7 +64,7 @@ public class AdminUserListActivity extends AppCompatActivity {
      * @param item username of User that was clicked on
      */
     public void goToProfileView(String item) {
-        Intent intent = new Intent(this, AdminUserProfileViewActivity.class);
+        final Intent intent = new Intent(this, AdminUserProfileViewActivity.class);
         intent.putExtra("username", item);
         startActivity(intent);
     }

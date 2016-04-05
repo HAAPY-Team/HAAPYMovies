@@ -11,7 +11,7 @@
             android:layout_width="136dp"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text="Name"
+            android:text="@string/admin_user_list_name"
             android:id="@+id/userlist_text1"
             android:layout_row="0"
             android:layout_column="0" />

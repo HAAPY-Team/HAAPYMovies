@@ -11,26 +11,47 @@ import com.haapyindustries.haapymovies.enums.UserType;
  * @version M9
  */
 public class User {
+    /**
+     * Id of User
+     */
     private long uid;
+    /**
+     * Username of User
+     */
     private String username;
+    /**
+     * Password of User
+     */
     private String password;
+    /**
+     * Major of User
+     */
     private String major;
+    /**
+     * Type of User
+     */
     private UserType userType;
+    /**
+     * Status of User
+     */
     private UserStatus userStatus;
+    /**
+     * Login tries of User
+     */
     private int loginTries;
 
     /**
      * Creates a new User
      *
-     * @param username
-     * @param password
-     * @param major
+     * @param usernameParam username of the User
+     * @param passwordParam password of the User
+     * @param majorParam major of the User
      */
-    public User(String username, String password, String major) {
+    public User(String usernameParam, String passwordParam, String majorParam) {
         this.uid = -1;
-        this.username = username;
-        this.password = password;
-        this.major = major;
+        this.username = usernameParam;
+        this.password = passwordParam;
+        this.major = majorParam;
         this.userType = UserType.USER;
         this.userStatus = UserStatus.ACTIVE;
     }
@@ -38,34 +59,34 @@ public class User {
     /**
      * Creats a new User
      *
-     * @param username
-     * @param password
-     * @param major
-     * @param userType
+     * @param usernameParam username of the User
+     * @param passwordParam password of the User
+     * @param majorParam major of the User
+     * @param userTypeParam user type of the User
      */
-    public User(String username, String password, String major, UserType userType) {
+    public User(String usernameParam, String passwordParam, String majorParam, UserType userTypeParam) {
         this.uid = -1;
-        this.username = username;
-        this.password = password;
-        this.major = major;
-        this.userType = userType;
+        this.username = usernameParam;
+        this.password = passwordParam;
+        this.major = majorParam;
+        this.userType = userTypeParam;
         this.userStatus = UserStatus.ACTIVE;
     }
 
     /**
      * Checks if password if correct for this User
      *
-     * @param password
+     * @param passwordParam password of the User
      * @return True if password is correct, False otherwise
      */
-    public boolean checkPass(String password) {
-        return this.password.equals(password);
+    public boolean checkPass(String passwordParam) {
+        return this.password.equals(passwordParam);
     }
 
     /**
      * Gets Username
      *
-     * @return username
+     * @return username username of the User
      */
     public String getUsername() {
         return this.username;
@@ -74,7 +95,7 @@ public class User {
     /**
      * Gets Password
      *
-     * @return password
+     * @return password password of the User
      */
     public String getPassword() {
         return this.password;
@@ -83,7 +104,7 @@ public class User {
     /**
      * Gets Major
      *
-     * @return major
+     * @return major major of the User
      */
     public String getMajor() {
         return this.major;
@@ -110,27 +131,27 @@ public class User {
     /**
      * Sets a User's Status
      *
-     * @param status of User
+     * @param statusParam of User
      */
-    public void setStatus(UserStatus status) {
-        this.userStatus = status;
+    public void setStatus(UserStatus statusParam) {
+        this.userStatus = statusParam;
     }
     /**
      * Sets Password
      *
-     * @param password
+     * @param passwordParam password of the User
      */
-    public void setPassword(String password) {
-        this.password = password;
+    public void setPassword(String passwordParam) {
+        this.password = passwordParam;
     }
 
     /**
      * Sets Major
      *
-     * @param major
+     * @param majorParam of User
      */
-    public void setMajor(String major) {
-        this.major = major;
+    public void setMajor(String majorParam) {
+        this.major = majorParam;
     }
 
     /**
@@ -145,10 +166,10 @@ public class User {
     /**
      * Sets the Number of Login attempts
      *
-     * @param tries The new number of Tries
+     * @param triesParam The new number of Tries
      */
-    public void setLoginTries(int tries) {
-        this.loginTries = tries;
+    public void setLoginTries(int triesParam) {
+        this.loginTries = triesParam;
     }
 
     /**
@@ -161,10 +182,10 @@ public class User {
 
     /**
      * Sets the User's UID
-     * @param uid User's UID
+     * @param uidParam User's UID
      */
-    public void setUid(Long uid) {
-        this.uid = uid;
+    public void setUid(Long uidParam) {
+        this.uid = uidParam;
     }
 }
 

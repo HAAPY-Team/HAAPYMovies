@@ -6,12 +6,33 @@ package com.haapyindustries.haapymovies.models;
  * Holds the individual Rating of a Movie
  */
 public class RatingData {
+    /**
+     * The current rating
+     */
     public int currentRating;
+    /**
+     * Number of users who rated
+     */
     public int ratedUsers;
+    /**
+     * Major of user who rated
+     */
     private String major;
+    /**
+     * Username of user who rated
+     */
     private String username;
+    /**
+     * Movie name who rated
+     */
     private String movie;
+    /**
+     * Rating number
+     */
     private int rating;
+    /**
+     * Rating id
+     */
     private int rid;
 
     /**
@@ -24,18 +45,18 @@ public class RatingData {
 
     /**
      * Sets the rid of a rating data
-     * @param rid the new rid for the RatingData
+     * @param ridParam the new rid for the RatingData
      */
-    public void setRid(int rid) {
-        this.rid = rid;
+    public void setRid(int ridParam) {
+        this.rid = ridParam;
     }
 
     /**
      * Sets the rid of a rating data
-     * @param rid a long that is converted to an int to be set to the rid
+     * @param ridParam a long that is converted to an int to be set to the rid
      */
-    public void setRid(long rid) {
-        this.rid = (int) rid;
+    public void setRid(long ridParam) {
+        this.rid = (int) ridParam;
     }
 
     /**
@@ -48,10 +69,10 @@ public class RatingData {
 
     /**
      * Sets the major of the RatingData
-     * @param major the major to set the RatingData to
+     * @param majorParam the major to set the RatingData to
      */
-    public void setMajor(String major) {
-        this.major = major;
+    public void setMajor(String majorParam) {
+        this.major = majorParam;
     }
 
     /**
@@ -64,10 +85,10 @@ public class RatingData {
 
     /**
      * Sets the username of the RatingData
-     * @param username the username to set the RatingData to
+     * @param usernameParam the username to set the RatingData to
      */
-    public void setUsername(String username) {
-        this.username = username;
+    public void setUsername(String usernameParam) {
+        this.username = usernameParam;
     }
 
     /**
@@ -80,10 +101,10 @@ public class RatingData {
 
     /**
      * Sets the movie name for the RatingData
-     * @param movie the movie name to set the RatingData to
+     * @param movieParam the movie name to set the RatingData to
      */
-    public void setMovie(String movie) {
-        this.movie = movie;
+    public void setMovie(String movieParam) {
+        this.movie = movieParam;
     }
 
     /**
@@ -96,10 +117,10 @@ public class RatingData {
 
     /**
      * Sets the rating of the RatingData
-     * @param rating the rating to set the RatingData to
+     * @param ratingParam the rating to set the RatingData to
      */
-    public void setRating(int rating) {
-        this.rating = rating;
+    public void setRating(int ratingParam) {
+        this.rating = ratingParam;
     }
 
     /**
@@ -111,11 +132,11 @@ public class RatingData {
 
     /**
      * Constructs a RatingData Object for a given User with a given Rating
-     * @param rating of a Movie
-     * @param users Rating belongs to
+     * @param ratingParam of a Movie
+     * @param usersParam Rating belongs to
      */
-    public RatingData(int rating, int users) {
-        currentRating = rating;
-        ratedUsers = users;
+    public RatingData(int ratingParam, int usersParam) {
+        currentRating = ratingParam;
+        ratedUsers = usersParam;
     }
 }

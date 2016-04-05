@@ -24,13 +24,13 @@ public class RegistrationPageActivity extends AppCompatActivity {
     /**
      * Sets up Registration Page
      *
-     * @param savedInstanceState
+     * @param savedInstanceState the saved instance state of the database to check
      */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registration_page);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        final Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
 
@@ -41,7 +41,7 @@ public class RegistrationPageActivity extends AppCompatActivity {
      * Cancel Registration
      * ends activity
      *
-     * @param w
+     * @param w the View of the activity
      */
     public void onCancelButtonClick(View w) {
         finish();
@@ -51,21 +51,21 @@ public class RegistrationPageActivity extends AppCompatActivity {
      * Registers User
      * Displays Toast message if User is already in database
      *
-     * @param w
+     * @param w the View for the activity
      */
     public void onRegisterButtonClick(View w) {
-        String username = ((EditText) findViewById(R.id.registerPageUsername)).getText().toString();
-        String password = ((EditText) findViewById(R.id.registerPagePassword)).getText().toString();
-        String major = ((EditText) findViewById(R.id.registerPageMajor)).getText().toString();
-        Database db = new Database(getBaseContext());
+        final String username = ((EditText) findViewById(R.id.registerPageUsername)).getText().toString();
+        final String password = ((EditText) findViewById(R.id.registerPagePassword)).getText().toString();
+        final String major = ((EditText) findViewById(R.id.registerPageMajor)).getText().toString();
+        final Database db = new Database(getBaseContext());
         if (UserManager.doesUserExist(username, db)) {
-            Context context = getApplicationContext();
-            int duration = Toast.LENGTH_SHORT;
-            Toast t = Toast.makeText(context, "User already exists", duration);
+            final Context context = getApplicationContext();
+            final int duration = Toast.LENGTH_SHORT;
+            final Toast t = Toast.makeText(context, "User already exists", duration);
             t.show();
         } else {
             UserManager.addUser(username, password, major, db);
-            Intent intent = new Intent(this, WelcomeActivity.class);
+            final Intent intent = new Intent(this, WelcomeActivity.class);
             finish();
             startActivity(intent);
         }

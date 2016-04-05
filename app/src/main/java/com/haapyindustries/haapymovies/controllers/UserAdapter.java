@@ -22,22 +22,31 @@ import java.util.ArrayList;
  */
 public class UserAdapter extends ArrayAdapter<User> {
 
+    /**
+     * Context to access database
+     */
     private final Context context;
+    /**
+     * List of users returned from database
+     */
     private final ArrayList<User> data;
+    /**
+     * Id of layout resource
+     */
     private final int layoutResourceId;
 
     /**
      * Constructs the UserAdapter
      *
-     * @param context The current context
-     * @param layoutResourceId The resource ID for a layout file containing a layout to use when instantiating views.
-     * @param data The Data to be displayed
+     * @param contextParam The current context
+     * @param layoutResourceIdParam The resource ID for a layout file containing a layout to use when instantiating views.
+     * @param dataParam The Data to be displayed
      */
-    public UserAdapter(Context context, int layoutResourceId, ArrayList<User> data) {
-        super(context, layoutResourceId, data);
-        this.context = context;
-        this.data = data;
-        this.layoutResourceId = layoutResourceId;
+    public UserAdapter(Context contextParam, int layoutResourceIdParam, ArrayList<User> dataParam) {
+        super(contextParam, layoutResourceIdParam, dataParam);
+        this.context = contextParam;
+        this.data = dataParam;
+        this.layoutResourceId = layoutResourceIdParam;
     }
 
     /**
@@ -53,9 +62,8 @@ public class UserAdapter extends ArrayAdapter<User> {
         View row = convertView;
         ViewHolder holder = null;
 
-        if(row == null)
-        {
-            LayoutInflater inflater = ((Activity)context).getLayoutInflater();
+        if(row == null) {
+            final LayoutInflater inflater = ((Activity)context).getLayoutInflater();
             row = inflater.inflate(layoutResourceId, parent, false);
 
             holder = new ViewHolder();
@@ -63,13 +71,11 @@ public class UserAdapter extends ArrayAdapter<User> {
             holder.textView2 = (TextView)row.findViewById(R.id.userlist_text2);
             holder.textView3 = (TextView)row.findViewById(R.id.userlist_text3);
             row.setTag(holder);
-        }
-        else
-        {
+        } else {
             holder = (ViewHolder)row.getTag();
         }
 
-        User user = data.get(position);
+        final User user = data.get(position);
 
         holder.textView1.setText(user.getUsername().toString());
         holder.textView2.setText(user.getUserType().toString());
@@ -81,11 +87,19 @@ public class UserAdapter extends ArrayAdapter<User> {
     /**
      * Holds Data for each View
      */
-    static class ViewHolder
-    {
-        TextView textView1;
-        TextView textView2;
-        TextView textView3;
+    static class ViewHolder {
+        /**
+         * Textview displaying user information
+         */
+        private TextView textView1;
+        /**
+         * Textview displaying user information
+         */
+        private TextView textView2;
+        /**
+         * Textview displaying user information
+         */
+        private TextView textView3;
     }
 }
 

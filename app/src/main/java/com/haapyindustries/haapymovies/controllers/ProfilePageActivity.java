@@ -31,11 +31,11 @@ public class ProfilePageActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile_page_activity);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        final Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
 
-        User user = UserManager.getLoggedInUser();
+        final User user = UserManager.getLoggedInUser();
         ((EditText) findViewById(R.id.profilePageMajor)).setText(user.getMajor());
         ((EditText) findViewById(R.id.profilePagePassword)).setText(user.getPassword());
         ((TextView) findViewById(R.id.profilePageBanner)).setText(user.getUsername());
@@ -50,7 +50,7 @@ public class ProfilePageActivity extends AppCompatActivity {
      */
     public void onLogoutButtonClick(View w) {
         UserManager.logoutUser();
-        Intent intent = new Intent(this, WelcomeActivity.class);
+        final Intent intent = new Intent(this, WelcomeActivity.class);
         startActivity(intent);
         finish();
     }
@@ -63,9 +63,9 @@ public class ProfilePageActivity extends AppCompatActivity {
      * @param w View that was clicked
      */
     public void onEditButtonClick(View w) {
-        User user = UserManager.getLoggedInUser();
-        String newMajor = ((EditText) findViewById(R.id.profilePageMajor)).getText().toString();
-        String newPassword = ((EditText) findViewById(R.id.profilePagePassword)).getText().toString();
+        final User user = UserManager.getLoggedInUser();
+        final String newMajor = ((EditText) findViewById(R.id.profilePageMajor)).getText().toString();
+        final String newPassword = ((EditText) findViewById(R.id.profilePagePassword)).getText().toString();
         user.setMajor(newMajor);
         user.setPassword(newPassword);
         Toast.makeText(getApplicationContext(), "User Edited", Toast.LENGTH_SHORT).show();

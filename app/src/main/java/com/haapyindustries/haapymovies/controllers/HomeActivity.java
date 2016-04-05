@@ -26,7 +26,7 @@ public class HomeActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        final Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
     }
 
@@ -37,7 +37,7 @@ public class HomeActivity extends AppCompatActivity {
      * @param v View that was clicked
      */
     public void onSearchButtonClick(View v) {
-        Intent intent = new Intent(this, MovieListActivity.class);
+        final Intent intent = new Intent(this, MovieListActivity.class);
         startActivity(intent);
     }
 
@@ -48,7 +48,7 @@ public class HomeActivity extends AppCompatActivity {
      * @param v View that was clicked
      */
     public void onRecommendButtonClick(View v) {
-        Intent intent = new Intent(this, RecommendationActivity.class);
+        final Intent intent = new Intent(this, RecommendationActivity.class);
         startActivity(intent);
     }
 
@@ -59,7 +59,7 @@ public class HomeActivity extends AppCompatActivity {
      * @param v View that was clicked
      */
     public void onLogoutButtonClick(View v) {
-        Intent intent = new Intent(this, WelcomeActivity.class);
+        final Intent intent = new Intent(this, WelcomeActivity.class);
         finish();
         startActivity(intent);
     }

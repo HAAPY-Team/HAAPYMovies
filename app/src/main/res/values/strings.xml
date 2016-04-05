@@ -16,6 +16,7 @@
     <string name="title_activity_home">Home</string>
     <string name="title_activity_admin_user_list">Users</string>
     <string name="title_activity_admin_user_profile_view">User Moderate</string>
+    <string name="admin_user_list_name">Name</string>
     <!--<string name="register_button">Register</string>-->
     <!--<string name="login_button">Login</string>-->
 </resources>

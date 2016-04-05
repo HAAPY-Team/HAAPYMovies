@@ -3,6 +3,7 @@ package com.haapyindustries.haapymovies.controllers;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -25,6 +26,7 @@ import org.json.JSONObject;
 import com.haapyindustries.haapymovies.R;
 import com.haapyindustries.haapymovies.models.Movie;
 
+import java.io.Console;
 import java.util.ArrayList;
 
 /**
@@ -35,11 +37,22 @@ import java.util.ArrayList;
  * @version M8
  */
 public class MovieListActivity extends AppCompatActivity {
-
+    /**
+     * The queue to handle api call requests
+     */
     private RequestQueue queue;
 
+    /**
+     * The API call response
+     */
     private String response;
+    /**
+     * The list of movies from the API call
+     */
     private ArrayList<Movie> movies;
+    /**
+     * The API key
+     */
     private String apiKey;
 
     /**
@@ -52,7 +65,7 @@ public class MovieListActivity extends AppCompatActivity {
         apiKey = "yedukp76ffytfuy24zsqk7f5";
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_movie_list);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        final Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         queue = Volley.newRequestQueue(this);
     }
@@ -83,7 +96,7 @@ public class MovieListActivity extends AppCompatActivity {
      * @param view View that was clicked
      */
     public void movieSearch(View view) {
-        EditText searchbox = (EditText) findViewById(R.id.editText);
+        final EditText searchbox = (EditText) findViewById(R.id.editText);
         if (!String.valueOf(searchbox.getText()).replace(" ", "").equals("")) {
             getReleases(searchbox.getText().toString());
         }
@@ -104,30 +117,30 @@ public class MovieListActivity extends AppCompatActivity {
             url = "http://api.rottentomatoes.com/api/public/v1.0/movies.json?apikey="+apiKey+"&q=" + type.replaceAll("\\s+","%20");
         }
 
-        JsonObjectRequest joR = new JsonObjectRequest(Request.Method.GET, url, (String) null, new Response.Listener<JSONObject>() {
+        final JsonObjectRequest joR = new JsonObjectRequest(Request.Method.GET, url, (String) null, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject resp) {
-                JSONArray movieArray = resp.optJSONArray("movies");
+                final JSONArray movieArray = resp.optJSONArray("movies");
                 movies = new ArrayList<Movie>();
                 for(int i = 0; i < movieArray.length(); i++){
                     try{
-                        JSONObject movieObj = movieArray.getJSONObject(i);
-                        Movie m = new Movie();
+                        final JSONObject movieObj = movieArray.getJSONObject(i);
+                        final Movie m = new Movie();
                         assert movieObj != null;
                         m.setTitle(movieObj.optString("title"));
                         movies.add(m);
 
                     } catch (JSONException e) {
-                        e.printStackTrace();
+                        Log.e("JSONException", e.getMessage(), e);
                     }
                 }
-                ArrayAdapter adapter = new ArrayAdapter(MovieListActivity.this, R.layout.activity_listview, movies);
-                ListView listView = (ListView) findViewById(R.id.mobile_list);
+                final ArrayAdapter adapter = new ArrayAdapter(MovieListActivity.this, R.layout.activity_listview, movies);
+                final ListView listView = (ListView) findViewById(R.id.mobile_list);
                 listView.setAdapter(adapter);
                 listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                     @Override
                     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                        String item = ((TextView) view).getText().toString();
+                        final String item = ((TextView) view).getText().toString();
                         goToRater(item);
                     }
                 });
@@ -150,7 +163,7 @@ public class MovieListActivity extends AppCompatActivity {
      * @param movieName Name of Movie that was clicked on
      */
     public void goToRater(String movieName){
-        Intent intent = new Intent(this, RaterActivity.class);
+        final Intent intent = new Intent(this, RaterActivity.class);
         intent.putExtra("movieName", movieName);
         startActivity(intent);
     }

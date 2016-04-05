@@ -24,7 +24,7 @@ public class MyApplication extends Application{
     public void onCreate() {
         super.onCreate();
 
-        Database db = new Database(getApplicationContext());
+        final Database db = new Database(getApplicationContext());
         try {
             db.open();
         } catch (Exception e) {
@@ -36,7 +36,7 @@ public class MyApplication extends Application{
         UserManager.addUser("p", "p", "cs", db);
         UserManager.addUser("aaron", "weed", "cs", db);
         db.addUser(new User("pjztam5", "stuff", "cs"));
-        User u = db.getUserFromUsername("pjztam5");
+        final User u = db.getUserFromUsername("pjztam5");
         Log.d("MyApplication", u.getMajor());
     }
 }
