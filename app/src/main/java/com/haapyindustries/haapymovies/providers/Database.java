@@ -24,11 +24,11 @@ public class Database {
     /**
      * The SQLiteDatabase to query
      */
-    private SQLiteDatabase db;
+    protected SQLiteDatabase db;
     /**
      * The DatabaseHelper to manage the database connection
      */
-    private DatabaseHelper helper;
+    protected DatabaseHelper helper;
 
     /**
      * Create a new Database
@@ -37,6 +37,21 @@ public class Database {
      */
     public Database(Context context) {
         helper = new DatabaseHelper(context);
+        try {
+            open();
+        } catch (Exception e) {
+
+        }
+    }
+
+    /**
+     * Create a new Database
+     *
+     * @param context Current context
+     * @param databaseName Name of Database
+     */
+    public Database(Context context, String databaseName) {
+        helper = new DatabaseHelper(context, databaseName);
         try {
             open();
         } catch (Exception e) {
