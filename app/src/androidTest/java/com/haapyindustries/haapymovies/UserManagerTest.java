@@ -32,6 +32,13 @@ import static org.junit.Assert.assertThat;
 
 @RunWith(AndroidJUnit4.class)
 @SmallTest
+
+/**
+ * Test Cases for UserManager
+ *
+ * @author pjztam
+ * @version M10
+ */
 public class UserManagerTest {
 
     protected Context context;
