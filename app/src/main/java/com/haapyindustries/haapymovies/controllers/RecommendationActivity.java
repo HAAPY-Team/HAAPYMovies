@@ -11,7 +11,6 @@ import android.widget.TextView;
 
 import com.haapyindustries.haapymovies.R;
 import com.haapyindustries.haapymovies.models.RatingData;
-import com.haapyindustries.haapymovies.models.UserManager;
 import com.haapyindustries.haapymovies.providers.Database;
 
 /**

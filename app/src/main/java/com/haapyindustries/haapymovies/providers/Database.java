@@ -4,7 +4,6 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-import android.media.Rating;
 
 import com.haapyindustries.haapymovies.enums.UserStatus;
 import com.haapyindustries.haapymovies.enums.UserType;
@@ -39,7 +38,7 @@ public class Database {
         helper = new DatabaseHelper(context);
         try {
             open();
-        } catch (Exception e) {
+        } catch (SQLException e) {
 
         }
     }
@@ -111,7 +110,7 @@ public class Database {
         values.put(helper.USER_COLUMN_USERTYPE,     user.getUserType().toString());
         values.put(helper.USER_COLUMN_USERSTATUS, user.getUserStatus().toString());
         values.put(helper.USER_COLUMN_LOGINTRIES, user.getLoginTries());
-        db.update(helper.USER_TABLE_NAME, values, helper.USER_COLUMN_UID + "=?", new String[]{user.getUid() + ""});
+        db.update(helper.USER_TABLE_NAME, values, helper.USER_COLUMN_UID + "=?", new String[]{Long.toString(user.getUid())});
     }
 
     /**
@@ -202,7 +201,7 @@ public class Database {
         values.put(helper.RATINGS_COLUMN_MOVIENAME,    rating.getMovie());
         values.put(helper.RATINGS_COLUMN_RATING,        rating.getRating());
         values.put(helper.RATINGS_COLUMN_USERNAME, rating.getUsername());
-        db.update(helper.RATINGS_TABLE_NAME, values, helper.RATINGS_COLUMN_RID + "=?", new String[]{rating.getRid() + ""});
+        db.update(helper.RATINGS_TABLE_NAME, values, helper.RATINGS_COLUMN_RID + "=?", new String[]{Long.toString(rating.getRid())});
     }
 
     /**
@@ -232,10 +231,11 @@ public class Database {
      * @return an instance of RatingData for the current user for the specified movie
      */
     public RatingData getUserRatingForMovie(String username, String movie) {
+        final String equalQuest = " = ?";
         final Cursor c = db.rawQuery(
                 "SELECT * FROM " + helper.RATINGS_TABLE_NAME
-                        + " WHERE " + helper.RATINGS_COLUMN_USERNAME + " = ?"
-                        + " AND " + helper.RATINGS_COLUMN_MOVIENAME + " = ?",
+                        + " WHERE " + helper.RATINGS_COLUMN_USERNAME + equalQuest
+                        + " AND " + helper.RATINGS_COLUMN_MOVIENAME + equalQuest,
                 new String[]{username, movie}
         );
         if ((c != null) && (c.getCount() > 0)) {
@@ -256,10 +256,11 @@ public class Database {
      * major
      */
     public int getMajorRatingForMovie(String major, String movie) {
+        final String equalQuest = " = ?";
         final Cursor c = db.rawQuery(
                 "SELECT * FROM " + helper.RATINGS_TABLE_NAME
-                        + " WHERE " + helper.RATINGS_COLUMN_MAJOR + " = ?"
-                        + " AND " + helper.RATINGS_COLUMN_MOVIENAME + " = ?",
+                        + " WHERE " + helper.RATINGS_COLUMN_MAJOR + equalQuest
+                        + " AND " + helper.RATINGS_COLUMN_MOVIENAME + equalQuest,
                 new String[]{major, movie}
         );
         if ((c != null) && (c.getCount() > 0)) {

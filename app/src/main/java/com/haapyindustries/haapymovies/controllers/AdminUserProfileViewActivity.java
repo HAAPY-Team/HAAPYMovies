@@ -1,8 +1,6 @@
 package com.haapyindustries.haapymovies.controllers;
 
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
@@ -13,8 +11,6 @@ import com.haapyindustries.haapymovies.R;
 import com.haapyindustries.haapymovies.enums.UserStatus;
 import com.haapyindustries.haapymovies.models.User;
 import com.haapyindustries.haapymovies.models.UserManager;
-
-import org.w3c.dom.Text;
 
 /**
  * Admin User Profile View Activity

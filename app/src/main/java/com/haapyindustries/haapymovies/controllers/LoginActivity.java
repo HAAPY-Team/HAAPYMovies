@@ -57,6 +57,7 @@ public class LoginActivity extends AppCompatActivity {
      * @param w View that was clicked
      */
     public void onLoginButtonClick(View w) {
+        final int maxLoginTries = 3;
         final EditText userBox = (EditText) findViewById(R.id.user_box);
         final EditText passBox = (EditText) findViewById(R.id.pass_box);
         final String username = userBox.getText().toString();
@@ -72,9 +73,9 @@ public class LoginActivity extends AppCompatActivity {
         } else if (user.getUserStatus() == UserStatus.LOCKED) {
             (Toast.makeText(getApplicationContext(), "User Account locked", Toast.LENGTH_SHORT)).show();
         } else if (!user.getPassword().equals(password)) {
-            if (user.getLoginTries() < 3) {
+            if (user.getLoginTries() < maxLoginTries) {
                 Log.d("Login Failed", "from login activity");
-                (Toast.makeText(getApplicationContext(), "Incorrect Password. You have " + (3 - user.getLoginTries()) + " tries left.", Toast.LENGTH_SHORT)).show();
+                (Toast.makeText(getApplicationContext(), "Incorrect Password. You have " + (maxLoginTries - user.getLoginTries()) + " tries left.", Toast.LENGTH_SHORT)).show();
             }
         } else if (user.getPassword().equals(password)) {
             if(UserManager.getLoggedInUser().getUserType() == UserType.ADMIN) {

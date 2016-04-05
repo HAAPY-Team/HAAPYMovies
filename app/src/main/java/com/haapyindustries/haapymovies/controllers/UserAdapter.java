@@ -11,7 +11,7 @@ import android.widget.TextView;
 import com.haapyindustries.haapymovies.R;
 import com.haapyindustries.haapymovies.models.User;
 
-import java.util.ArrayList;
+import java.util.List;
 
 /**
  * User Adaptor
@@ -29,7 +29,7 @@ public class UserAdapter extends ArrayAdapter<User> {
     /**
      * List of users returned from database
      */
-    private final ArrayList<User> data;
+    private final List<User> data;
     /**
      * Id of layout resource
      */
@@ -42,7 +42,7 @@ public class UserAdapter extends ArrayAdapter<User> {
      * @param layoutResourceIdParam The resource ID for a layout file containing a layout to use when instantiating views.
      * @param dataParam The Data to be displayed
      */
-    public UserAdapter(Context contextParam, int layoutResourceIdParam, ArrayList<User> dataParam) {
+    public UserAdapter(Context contextParam, int layoutResourceIdParam, List<User> dataParam) {
         super(contextParam, layoutResourceIdParam, dataParam);
         this.context = contextParam;
         this.data = dataParam;

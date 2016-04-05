@@ -1,5 +1,6 @@
 package com.haapyindustries.haapymovies.controllers;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -7,9 +8,8 @@ import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.ListView;
-import android.content.Intent;
 import android.widget.EditText;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import com.android.volley.Request;
@@ -18,16 +18,15 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
+import com.haapyindustries.haapymovies.R;
+import com.haapyindustries.haapymovies.models.Movie;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import com.haapyindustries.haapymovies.R;
-import com.haapyindustries.haapymovies.models.Movie;
-
-import java.io.Console;
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Movie List Activity
@@ -49,7 +48,7 @@ public class MovieListActivity extends AppCompatActivity {
     /**
      * The list of movies from the API call
      */
-    private ArrayList<Movie> movies;
+    private List<Movie> movies;
     /**
      * The API key
      */
@@ -109,9 +108,9 @@ public class MovieListActivity extends AppCompatActivity {
      */
     public void getReleases(String type) {
         String url = "http://api.rottentomatoes.com/api/public/v1.0/lists/movies/in_theaters.json?apikey=yedukp76ffytfuy24zsqk7f5";
-        if(type.equals("theaterREQ")) {
+        if("theaterREQ".equals(type)) {
             url = "http://api.rottentomatoes.com/api/public/v1.0/lists/movies/in_theaters.json?apikey=" + apiKey;
-        } else if(type.equals("dvdREQ")) {
+        } else if("dvdREQ".equals(type)) {
             url = "http://api.rottentomatoes.com/api/public/v1.0/lists/dvds/new_releases.json?apikey=" + apiKey;
         } else {
             url = "http://api.rottentomatoes.com/api/public/v1.0/movies.json?apikey="+apiKey+"&q=" + type.replaceAll("\\s+","%20");
