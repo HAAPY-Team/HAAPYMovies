@@ -21,6 +21,32 @@ import com.haapyindustries.haapymovies.providers.Database;
  * @version M8
  */
 public class RecommendationActivity extends AppCompatActivity {
+
+    /**
+     * magic number 1
+     */
+    private static final int ONE = 1;
+
+    /**
+     * magic number 2
+     */
+    private static final int TWO = 2;
+
+    /**
+     * magic number 3
+     */
+    private static final int THREE = 3;
+
+    /**
+     * magic number 4
+     */
+    private static final int FOUR = 4;
+
+    /**
+     * magic number 5
+     */
+    private static final int FIVE = 5;
+
     /**
      * ImageView for the rating element
      */
@@ -108,25 +134,25 @@ public class RecommendationActivity extends AppCompatActivity {
             recommendText.setText(topMovie.getMovie());
             final int rating = topMovie.getRating();
             switch (rating) {
-                case 1:
+                case ONE:
                     rec1.setVisibility(View.VISIBLE);
                     break;
-                case 2:
+                case TWO:
                     rec1.setVisibility(View.VISIBLE);
                     rec2.setVisibility(View.VISIBLE);
                     break;
-                case 3:
+                case THREE:
                     rec1.setVisibility(View.VISIBLE);
                     rec2.setVisibility(View.VISIBLE);
                     rec3.setVisibility(View.VISIBLE);
                     break;
-                case 4:
+                case FOUR:
                     rec1.setVisibility(View.VISIBLE);
                     rec2.setVisibility(View.VISIBLE);
                     rec3.setVisibility(View.VISIBLE);
                     rec4.setVisibility(View.VISIBLE);
                     break;
-                case 5:
+                case FIVE:
                     rec1.setVisibility(View.VISIBLE);
                     rec2.setVisibility(View.VISIBLE);
                     rec3.setVisibility(View.VISIBLE);

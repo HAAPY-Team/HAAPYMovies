@@ -13,10 +13,6 @@ public class Movie {
      * movieTitle of Movie
      */
     private String movieTitle;
-    /**
-     * movieDate of Movie
-     */
-    private String movieDate;
 
     /**
      * Gets movieTitle of Movie

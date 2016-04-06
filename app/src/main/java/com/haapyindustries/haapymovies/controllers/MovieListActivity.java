@@ -42,10 +42,6 @@ public class MovieListActivity extends AppCompatActivity {
     private RequestQueue queue;
 
     /**
-     * The API call response
-     */
-    private String response;
-    /**
      * The list of movies from the API call
      */
     private List<Movie> movies;
@@ -96,7 +92,7 @@ public class MovieListActivity extends AppCompatActivity {
      */
     public void movieSearch(View view) {
         final EditText searchbox = (EditText) findViewById(R.id.editText);
-        if (!String.valueOf(searchbox.getText()).replace(" ", "").equals("")) {
+        if (!("").equals(String.valueOf(searchbox.getText()).replace(" ", ""))) {
             getReleases(searchbox.getText().toString());
         }
     }
@@ -123,32 +119,26 @@ public class MovieListActivity extends AppCompatActivity {
                 movies = new ArrayList<Movie>();
                 for(int i = 0; i < movieArray.length(); i++){
                     try{
-                        final JSONObject movieObj = movieArray.getJSONObject(i);
                         final Movie m = new Movie();
-                        assert movieObj != null;
-                        m.setTitle(movieObj.optString("title"));
+                        m.setTitle(movieArray.getJSONObject(i).optString("title"));
                         movies.add(m);
-
                     } catch (JSONException e) {
                         Log.e("JSONException", e.getMessage(), e);
                     }
                 }
-                final ArrayAdapter adapter = new ArrayAdapter(MovieListActivity.this, R.layout.activity_listview, movies);
                 final ListView listView = (ListView) findViewById(R.id.mobile_list);
-                listView.setAdapter(adapter);
+                listView.setAdapter(new ArrayAdapter(MovieListActivity.this, R.layout.activity_listview, movies));
                 listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                     @Override
                     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                        final String item = ((TextView) view).getText().toString();
-                        goToRater(item);
+                        goToRater(((TextView) view).getText().toString());
                     }
                 });
-
             }
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                response = "Request failed bro";
+                Log.d("Volley Error", "Request failed bro");
             }
         });
         queue.add(joR);
@@ -162,6 +152,7 @@ public class MovieListActivity extends AppCompatActivity {
      * @param movieName Name of Movie that was clicked on
      */
     public void goToRater(String movieName){
+        movies.size();
         final Intent intent = new Intent(this, RaterActivity.class);
         intent.putExtra("movieName", movieName);
         startActivity(intent);

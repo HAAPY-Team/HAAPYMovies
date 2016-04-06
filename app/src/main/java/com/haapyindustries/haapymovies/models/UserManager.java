@@ -22,7 +22,11 @@ import java.util.Set;
  */
 public final class UserManager {
 
-    UserManager() {
+    /**
+     * This thing does absolutely nothing
+     * But theoretically.. it consturcts a User Manager object?
+     */
+    private UserManager() {
 
     }
 

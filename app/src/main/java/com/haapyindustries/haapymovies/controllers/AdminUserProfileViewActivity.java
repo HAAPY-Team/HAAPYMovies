@@ -79,6 +79,7 @@ public class AdminUserProfileViewActivity extends AppCompatActivity {
      * @param w View that was clicked
      */
     public void onBanButtonClick(View w) {
+        type.setText(type.getText().toString());
         if(user.getUserStatus() != UserStatus.BANNED) {
             user.setStatus(UserStatus.BANNED);
             final String unban = "Unban";

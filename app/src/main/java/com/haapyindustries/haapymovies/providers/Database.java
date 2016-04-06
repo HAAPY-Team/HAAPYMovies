@@ -1,9 +1,11 @@
 package com.haapyindustries.haapymovies.providers;
 
+import android.annotation.SuppressLint;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.util.Log;
 
 import com.haapyindustries.haapymovies.enums.UserStatus;
 import com.haapyindustries.haapymovies.enums.UserType;
@@ -20,14 +22,19 @@ import java.sql.SQLException;
  * @version M9
  */
 public class Database {
+
+
     /**
      * The SQLiteDatabase to query
      */
-    protected SQLiteDatabase db;
+    private SQLiteDatabase db;
+
+
+
     /**
      * The DatabaseHelper to manage the database connection
      */
-    protected DatabaseHelper helper;
+    private DatabaseHelper helper;
 
     /**
      * Create a new Database
@@ -36,10 +43,18 @@ public class Database {
      */
     public Database(Context context) {
         helper = new DatabaseHelper(context);
+        callOpen();
+    }
+
+    /**
+     * Helper method to call open
+     */
+    @SuppressLint("LogConditional")
+    private void callOpen() {
         try {
             open();
         } catch (SQLException e) {
-
+            Log.d("Database.java:", e.getMessage());
         }
     }
 
@@ -49,12 +64,13 @@ public class Database {
      * @param context Current context
      * @param databaseName Name of Database
      */
+    @SuppressLint("LogConditional")
     public Database(Context context, String databaseName) {
         helper = new DatabaseHelper(context, databaseName);
         try {
             open();
-        } catch (Exception e) {
-
+        } catch (SQLException e) {
+            Log.d("Database.java:", e.getMessage());
         }
     }
 
@@ -63,7 +79,7 @@ public class Database {
      *
      * @throws SQLException database SQLException for failure to update database
      */
-    public void open() throws SQLException {
+    private void open() throws SQLException {
         db = helper.getWritableDatabase();
     }
 
@@ -315,6 +331,38 @@ public class Database {
         rating.setRating(maxRating);
         c.close();
         return rating;
+    }
+
+    /**
+     * Gets the db
+     * @return the db
+     */
+    public SQLiteDatabase getDb() {
+        return db;
+    }
+
+    /**
+     * Sets the db
+     * @param dbParam the db
+     */
+    public void setDb(SQLiteDatabase dbParam) {
+        this.db = dbParam;
+    }
+
+    /**
+     * Gets the helper
+     * @return the helper
+     */
+    public DatabaseHelper getHelper() {
+        return helper;
+    }
+
+    /**
+     * Sets the helper
+     * @param helperParam the new helper
+     */
+    public void setHelper(DatabaseHelper helperParam) {
+        this.helper = helperParam;
     }
 
 }

@@ -7,14 +7,6 @@ package com.haapyindustries.haapymovies.models;
  */
 public class RatingData {
     /**
-     * The current rating
-     */
-    public int currentRating;
-    /**
-     * Number of users who rated
-     */
-    public int ratedUsers;
-    /**
      * Major of user who rated
      */
     private String major;
@@ -130,13 +122,4 @@ public class RatingData {
 
     }
 
-    /**
-     * Constructs a RatingData Object for a given User with a given Rating
-     * @param ratingParam of a Movie
-     * @param usersParam Rating belongs to
-     */
-    public RatingData(int ratingParam, int usersParam) {
-        currentRating = ratingParam;
-        ratedUsers = usersParam;
-    }
 }

@@ -7,22 +7,28 @@ import android.content.Context;
  */
 public class TestDatabase extends Database {
 
+    /**
+     * The activity context
+     */
     private Context context;
 
+    /**
+     * The name of the test database
+     */
     private static final String TEST_DATABASE_NAME = "haapymovies.test.db";
     /**
      * Create a new Database
      *
-     * @param context Current context
+     * @param contextParam Current context
      */
-    public TestDatabase(Context context) {
-        super(context, TEST_DATABASE_NAME);
-        this.context = context;
+    public TestDatabase(Context contextParam) {
+        super(contextParam, TEST_DATABASE_NAME);
+        this.context = contextParam;
     }
 
     @Override
     public void close() {
-        helper.close();
+        getHelper().close();
         context.deleteDatabase(TEST_DATABASE_NAME);
     }
 }

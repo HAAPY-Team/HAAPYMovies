@@ -26,6 +26,32 @@ import com.haapyindustries.haapymovies.providers.Database;
  * @version M8
  */
 public class RaterActivity extends AppCompatActivity implements View.OnClickListener {
+
+    /**
+     * magic number 1
+     */
+    private static final int ONE = 1;
+
+    /**
+     * magic number 2
+     */
+    private static final int TWO = 2;
+
+    /**
+     * magic number 3
+     */
+    private static final int THREE = 3;
+
+    /**
+     * magic number 4
+     */
+    private static final int FOUR = 4;
+
+    /**
+     * magic number 5
+     */
+    private static final int FIVE = 5;
+
     //Global identifiers
     /**
      * Spinner for the page
@@ -197,65 +223,9 @@ public class RaterActivity extends AppCompatActivity implements View.OnClickList
         submit = (Button) findViewById(R.id.ratingButton);
         setSupportActionBar(toolbar);
 
-        if (orating != 0) {
-            switch (orating) {
-                case 1:
-                    orat1.setVisibility(View.VISIBLE);
-                    break;
-                case 2:
-                    orat1.setVisibility(View.VISIBLE);
-                    orat2.setVisibility(View.VISIBLE);
-                    break;
-                case 3:
-                    orat1.setVisibility(View.VISIBLE);
-                    orat2.setVisibility(View.VISIBLE);
-                    orat3.setVisibility(View.VISIBLE);
-                    break;
-                case 4:
-                    orat1.setVisibility(View.VISIBLE);
-                    orat2.setVisibility(View.VISIBLE);
-                    orat3.setVisibility(View.VISIBLE);
-                    orat4.setVisibility(View.VISIBLE);
-                    break;
-                case 5:
-                    orat1.setVisibility(View.VISIBLE);
-                    orat2.setVisibility(View.VISIBLE);
-                    orat3.setVisibility(View.VISIBLE);
-                    orat4.setVisibility(View.VISIBLE);
-                    orat5.setVisibility(View.VISIBLE);
-                    break;
-            }
-        }
 
-        if (urating != 0) {
-            switch (urating) {
-                case 1:
-                    rat1.setVisibility(View.VISIBLE);
-                    break;
-                case 2:
-                    rat1.setVisibility(View.VISIBLE);
-                    rat2.setVisibility(View.VISIBLE);
-                    break;
-                case 3:
-                    rat1.setVisibility(View.VISIBLE);
-                    rat2.setVisibility(View.VISIBLE);
-                    rat3.setVisibility(View.VISIBLE);
-                    break;
-                case 4:
-                    rat1.setVisibility(View.VISIBLE);
-                    rat2.setVisibility(View.VISIBLE);
-                    rat3.setVisibility(View.VISIBLE);
-                    rat4.setVisibility(View.VISIBLE);
-                    break;
-                case 5:
-                    rat1.setVisibility(View.VISIBLE);
-                    rat2.setVisibility(View.VISIBLE);
-                    rat3.setVisibility(View.VISIBLE);
-                    rat4.setVisibility(View.VISIBLE);
-                    rat5.setVisibility(View.VISIBLE);
-                    break;
-            }
-        }
+        setOverallRatingStars(orating);
+        setUserRatingStars(urating);
 
         submit.setOnClickListener(this); //set action listner
     }
@@ -268,6 +238,79 @@ public class RaterActivity extends AppCompatActivity implements View.OnClickList
      */
     private static boolean isNumeric(String str) {
         return str.matches("-?\\d+(\\.\\d+)?");  //match a number with optional '-' and decimal.
+    }
+
+    /**
+     * Sets the Overall Rating Level
+     * @param rating the overall movie rating
+     */
+    private void setOverallRatingStars(int rating) {
+        submit = (Button) findViewById(R.id.ratingButton);
+        if (rating != 0) {
+            switch (rating) {
+                case ONE:
+                    orat1.setVisibility(View.VISIBLE);
+                    break;
+                case TWO:
+                    orat1.setVisibility(View.VISIBLE);
+                    orat2.setVisibility(View.VISIBLE);
+                    break;
+                case THREE:
+                    orat1.setVisibility(View.VISIBLE);
+                    orat2.setVisibility(View.VISIBLE);
+                    orat3.setVisibility(View.VISIBLE);
+                    break;
+                case FOUR:
+                    orat1.setVisibility(View.VISIBLE);
+                    orat2.setVisibility(View.VISIBLE);
+                    orat3.setVisibility(View.VISIBLE);
+                    orat4.setVisibility(View.VISIBLE);
+                    break;
+                case FIVE:
+                    orat1.setVisibility(View.VISIBLE);
+                    orat2.setVisibility(View.VISIBLE);
+                    orat3.setVisibility(View.VISIBLE);
+                    orat4.setVisibility(View.VISIBLE);
+                    orat5.setVisibility(View.VISIBLE);
+                    break;
+            }
+        }
+    }
+
+    /**
+     * Sets the User Rating Level
+     * @param rating the user rating
+     */
+    private void setUserRatingStars(int rating) {
+        if (rating != 0) {
+            switch (rating) {
+                case ONE:
+                    rat1.setVisibility(View.VISIBLE);
+                    break;
+                case TWO:
+                    rat1.setVisibility(View.VISIBLE);
+                    rat2.setVisibility(View.VISIBLE);
+                    break;
+                case THREE:
+                    rat1.setVisibility(View.VISIBLE);
+                    rat2.setVisibility(View.VISIBLE);
+                    rat3.setVisibility(View.VISIBLE);
+                    break;
+                case FOUR:
+                    rat1.setVisibility(View.VISIBLE);
+                    rat2.setVisibility(View.VISIBLE);
+                    rat3.setVisibility(View.VISIBLE);
+                    rat4.setVisibility(View.VISIBLE);
+                    break;
+                case FIVE:
+                    rat1.setVisibility(View.VISIBLE);
+                    rat2.setVisibility(View.VISIBLE);
+                    rat3.setVisibility(View.VISIBLE);
+                    rat4.setVisibility(View.VISIBLE);
+                    rat5.setVisibility(View.VISIBLE);
+                    break;
+            }
+        }
     }
 
 
